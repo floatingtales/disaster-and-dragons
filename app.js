@@ -4,6 +4,7 @@ import methodOverride from 'method-override';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
+import 'dotenv/config';
 
 import webpackConfig from './webpack_conf/webpack.dev.cjs';
 
