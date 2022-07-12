@@ -6,21 +6,7 @@ export default function App() {
   const [people, setPeople] = useState([]);
   return (
     <div>
-      {bill === null && (
-        <div>
-          <CreateBill setBill={setBill} />
-        </div>
-      )}
-      {bill !== null && (
-        <div>
-          <Form setItem={setItem} item={item} setPeople={setPeople} people={people} />
-        </div>
-      )}
-      {item.length > 0 && (
-        <div>
-          <Bill item={item} people={people} />
-        </div>
-      )}
+      <h1> Hellos</h1>
     </div>
   );
 }

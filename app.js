@@ -7,6 +7,8 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import 'dotenv/config';
 
 import webpackConfig from './webpack_conf/webpack.dev.cjs';
+import { resolve } from 'path';
+
 
 // Initialise Express instance
 const app = express();
@@ -40,6 +42,16 @@ if (env === 'development') {
     heartbeat: 10 * 1000,
   }));
 }
+
+app.get('/', (request, response) => {
+    response.sendFile(resolve('dist', 'main.html'));
+  })
+
+
+app.get('*', (req, res) => {
+  console.log(req.url);
+  res.status(404).send('not-found');
+});
 
 // Bind route definitions to the Express application
 // bindRoutes(app);
