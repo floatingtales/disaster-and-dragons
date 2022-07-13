@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
-const common = require('./webpack.common.cjs');
+const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   entry: {

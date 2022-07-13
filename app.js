@@ -1,14 +1,13 @@
-import cookieParser from 'cookie-parser';
-import express from 'express';
-import methodOverride from 'method-override';
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
-import 'dotenv/config';
+const cookieParser = require('cookie-parser');
+const express = require('express');
+const methodOverride = require('method-override');
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const { resolve } = require('path');
 
-import webpackConfig from './webpack_conf/webpack.dev.cjs';
-import { resolve } from 'path';
-
+const webpackConfig = require('./webpack_conf/webpack.dev.js');
+require('dotenv').config();
 
 // Initialise Express instance
 const app = express();
@@ -44,9 +43,8 @@ if (env === 'development') {
 }
 
 app.get('/', (request, response) => {
-    response.sendFile(resolve('dist', 'main.html'));
-  })
-
+  response.sendFile(resolve('dist', 'main.html'));
+});
 
 app.get('*', (req, res) => {
   console.log(req.url);
