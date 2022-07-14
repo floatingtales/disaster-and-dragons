@@ -6,7 +6,18 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const { resolve } = require('path');
 
+const db = {};
+
 const webpackConfig = require('./webpack_conf/webpack.dev');
+
+const UserController = require('./controllers/userController');
+
+const UserRoutes = require('./routes/userRoutes');
+
+const userController = new UserController(db.users, db);
+
+const userRoutes = new UserRoutes(userController).routes();
+
 require('dotenv').config();
 
 // Initialise Express instance
@@ -42,8 +53,11 @@ if (env === 'development') {
   }));
 }
 
-app.get('/', (request, response) => {
-  response.sendFile(resolve('dist', 'main.html'));
+app.use('/users', userRoutes);
+
+app.get('/', (req, res) => {
+  console.log(req.url);
+  res.sendFile(resolve('dist', 'main.html'));
 });
 
 app.get('*', (req, res) => {
