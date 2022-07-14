@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import './styles.scss';
 
-import App from './App';
+import App from './App.jsx';
 
 // create an element that React will render stuff into
 const rootElement = document.createElement('div');
