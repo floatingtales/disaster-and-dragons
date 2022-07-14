@@ -18,6 +18,10 @@
   },
   "homepage": "https://github.com/floatingtales/disaster-and-dragons#readme",
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.9.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
     "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.6",

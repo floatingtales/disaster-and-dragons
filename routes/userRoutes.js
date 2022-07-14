@@ -10,7 +10,6 @@ class UsersRoutes {
   routes() {
     /* axios routes */
     router.get('/test', this.controller.test.bind(this.controller));
-
     return router;
   }
 }
