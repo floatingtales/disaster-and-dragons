@@ -7,6 +7,9 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import FaceIcon from '@mui/icons-material/Face';
 
 export default function SignUpForm() {
+  // const signup
+  // redirect to login and send data through axios call
+  // save the state of text on change
   return (
     <div>
       <Box

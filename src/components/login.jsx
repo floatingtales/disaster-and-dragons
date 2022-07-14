@@ -7,10 +7,10 @@ import LoginIcon from '@mui/icons-material/Login';
 
 export default function Login() {
   const [data, setData] = useState({});
+
   return (
     <div>
       <Box
-        marginX={5}
         component="form"
         sx={{
           display: 'flex',
@@ -26,9 +26,9 @@ export default function Login() {
         <TextField
           style={{ width: '300px' }}
           required
-          id="outlined-required"
+          name="userName"
           label="Required"
-          placeholder="Email"
+          placeholder="User Name"
         />
         <TextField
           style={{ width: '300px' }}
@@ -37,7 +37,7 @@ export default function Login() {
           label="Required"
           placeholder="Password"
         />
-        <Button variant="contained" onEvent="/signUpd">
+        <Button variant="contained" onClick="/signUp">
           Login
         </Button>
       </Box>
