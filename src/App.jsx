@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
+import SignUpForm from './components/signUpForm.jsx';
+import Login from './components/login.jsx';
 
 export default function App() {
-  const [bill, setBill] = useState(null);
-  const [item, setItem] = useState([]);
-  const [people, setPeople] = useState([]);
   return (
     <div>
-      <h1> Hellos</h1>
+      <SignUpForm />
+      <Login />
     </div>
   );
 }
