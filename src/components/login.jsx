@@ -37,7 +37,7 @@ export default function Login() {
           label="Required"
           placeholder="Password"
         />
-        <Button variant="contained" onClick="/signUp">
+        <Button variant="contained">
           Login
         </Button>
       </Box>

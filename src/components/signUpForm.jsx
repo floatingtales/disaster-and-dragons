@@ -6,18 +6,23 @@ import { flexbox } from '@mui/system';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import FaceIcon from '@mui/icons-material/Face';
 
-export default function SignUpForm() {
+import axios from 'axios';
+
+export default function SignUpForm({ loginorsignup, setLoginorsignup }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
     // set something here that renders login page instead
     // a state that is passed as prop that on change will render login
     /// /base / has signup form
     // sign up form has links to login or on sign up go to login
-    // get data from the state
-
+    // get data from the states
+    // axios call to backend
+    const data = { email, password, username };
+    await axios.post('/users/signup', data);
+    setLoginorsignup(true);
   };
   const settingEmail = (event) => {
     const newEmail = event.target.value;

@@ -13,6 +13,12 @@ class UserController extends BaseController {
     res.send('testing route');
   }
 
+  signup(req, res) {
+    console.log(this.db);
+    console.log(req.body);
+    res.send('got the data', req.body);
+  }
+
   async testGet(req, res) {
     console.log(this.model);
     console.log(req.url);

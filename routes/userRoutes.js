@@ -10,6 +10,7 @@ class UsersRoutes {
   routes() {
     /* axios routes */
     router.get('/test', this.controller.test.bind(this.controller));
+    router.post('/signup', this.controller.signup.bind(this.controller));
     router.get('/testget', this.controller.testGet.bind(this.controller));
     router.post('/testset', this.controller.testSet.bind(this.controller));
     return router;
