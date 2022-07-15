@@ -6,7 +6,13 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const { resolve } = require('path');
 
-const db = {};
+require('dotenv').config();
+
+const connectDB = require('./config/db');
+
+connectDB();
+
+const userModel = require('./models/userModel');
 
 const webpackConfig = require('./webpack_conf/webpack.dev');
 
@@ -14,11 +20,9 @@ const UserController = require('./controllers/userController');
 
 const UserRoutes = require('./routes/userRoutes');
 
-const userController = new UserController(db.users, db);
+const userController = new UserController(userModel);
 
 const userRoutes = new UserRoutes(userController).routes();
-
-require('dotenv').config();
 
 // Initialise Express instance
 const app = express();

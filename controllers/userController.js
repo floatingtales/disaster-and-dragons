@@ -2,9 +2,8 @@ const bcrypt = require('bcrypt');
 const BaseController = require('./baseController');
 
 class UserController extends BaseController {
-  constructor(model, db) {
+  constructor(model) {
     super(model);
-    this.db = db;
     bcrypt.genSalt(10);
   }
 
@@ -12,6 +11,21 @@ class UserController extends BaseController {
     console.log(this.db);
     console.log(req.url);
     res.send('testing route');
+  }
+
+  async testGet(req, res) {
+    console.log(this.model);
+    console.log(req.url);
+    const data = await this.model.find().exec();
+    console.log(data);
+    res.send(data);
+  }
+
+  async testSet(req, res) {
+    console.log(this.model);
+    console.log(req.url);
+    const testData = await this.model.create(req.body);
+    res.send(testData);
   }
 }
 
