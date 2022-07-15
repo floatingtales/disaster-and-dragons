@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const { db } = require('../models/userModel');
 const BaseController = require('./baseController');
 
 class UserController extends BaseController {
@@ -13,10 +14,15 @@ class UserController extends BaseController {
     res.send('testing route');
   }
 
-  signup(req, res) {
-    console.log(this.db);
+  async signup(req, res) {
     console.log(req.body);
-    res.send('got the data', req.body);
+    // jwt and bcrypt
+    try {
+      await this.model.create({ username: req.body.username, email: req.body.email, password: req.body.password });
+      res.send('Done');
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   async testGet(req, res) {
