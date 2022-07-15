@@ -13,6 +13,9 @@ export default function SignUpForm({ loginorsignup, setLoginorsignup }) {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
 
+  const handleLogin = () => {
+    setLoginorsignup(true);
+  };
   const handleSignUp = async () => {
     // set something here that renders login page instead
     // a state that is passed as prop that on change will render login
@@ -80,6 +83,9 @@ export default function SignUpForm({ loginorsignup, setLoginorsignup }) {
         />
         <Button variant="contained" onClick={handleSignUp}>
           Sign Up
+        </Button>
+        <Button variant="contained" onClick={handleLogin}>
+          Go to Login
         </Button>
       </Box>
     </div>
