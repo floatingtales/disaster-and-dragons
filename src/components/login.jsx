@@ -6,7 +6,7 @@ import { flexbox } from '@mui/system';
 import LoginIcon from '@mui/icons-material/Login';
 import axios from 'axios';
 
-export default function Login() {
+export default function Login({ setLoginorsignup }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // data to be used for axios call
@@ -24,7 +24,14 @@ export default function Login() {
   const handleLogin = async () => {
     const checkLogin = await axios.post('/users/login', data);
     // I am getting the token back in checkLogin.data
+    console.log('checkLogin data', checkLogin);
+    // if password is wrog the messsage will be here
+    console.log(checkLogin.data);
+    // if password is right the token will be here
     console.log(checkLogin.data.accessToken);
+    localStorage.setItem('authorisedToken', checkLogin.data.accessToken);
+    // check fo0r authentication before going into mainPage?
+    setLoginorsignup('mainPage');
   };
 
   return (

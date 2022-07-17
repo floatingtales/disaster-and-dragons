@@ -8,24 +8,21 @@ import FaceIcon from '@mui/icons-material/Face';
 
 import axios from 'axios';
 
-export default function SignUpForm({ loginorsignup, setLoginorsignup }) {
+export default function SignUpForm({ setLoginorsignup }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
 
   const handleLogin = () => {
-    setLoginorsignup(true);
+    setLoginorsignup('login');
   };
   const handleSignUp = async () => {
-    // set something here that renders login page instead
-    // a state that is passed as prop that on change will render login
-    /// /base / has signup form
-    // sign up form has links to login or on sign up go to login
-    // get data from the states
-    // axios call to backend
+    // setting the data from signupForm
     const data = { email, password, username };
+    // posting this data into the database
     await axios.post('/users/signup', data);
-    setLoginorsignup(true);
+    // changing state to render login page
+    setLoginorsignup('login');
   };
   const settingEmail = (event) => {
     const newEmail = event.target.value;
@@ -39,12 +36,9 @@ export default function SignUpForm({ loginorsignup, setLoginorsignup }) {
     const newUsername = event.target.value;
     setUsername(newUsername);
   };
-  // const signup
-  // redirect to login and send data through axios call
-  // save the state of text on change
   return (
     <div>
-      s
+
       <Box
         marginX={5}
         component="form"
