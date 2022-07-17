@@ -5,8 +5,12 @@ const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const { resolve } = require('path');
+const jwt = require('jsonwebtoken');
 
 require('dotenv').config();
+
+// importing middleware
+const authMiddleware = require('./middleware/auth')();
 
 const connectDB = require('./config/db');
 
@@ -22,7 +26,7 @@ const UserRoutes = require('./routes/userRoutes');
 
 const userController = new UserController(userModel);
 
-const userRoutes = new UserRoutes(userController).routes();
+const userRoutes = new UserRoutes(userController, authMiddleware).routes();
 
 // Initialise Express instance
 const app = express();
