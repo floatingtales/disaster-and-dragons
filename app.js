@@ -5,7 +5,6 @@ const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const { resolve } = require('path');
-const jwt = require('jsonwebtoken');
 
 require('dotenv').config();
 
@@ -72,9 +71,6 @@ app.get('*', (req, res) => {
   console.log(req.url);
   res.status(404).send('not-found');
 });
-
-// Bind route definitions to the Express application
-// bindRoutes(app);
 
 // Set Express to listen on the given port
 const PORT = process.env.PORT || 3004;

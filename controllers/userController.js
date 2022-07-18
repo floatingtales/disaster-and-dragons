@@ -2,7 +2,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-const { db } = require('../models/userModel');
 const BaseController = require('./baseController');
 
 class UserController extends BaseController {
