@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const userSchema = mongoose.Schema({
+const boardSchema = mongoose.Schema({
   email: {
     type: String,
     required: true,
@@ -15,13 +15,14 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  friends: [this],
-  profile_img: {
+  friends: {
+    type: Array,
+  },
+  profileImg: {
     type: String,
-    default: '/profile/default.jpg',
   },
 }, {
   timestamps: true,
 });
 
-module.exports = mongoose.model('users', userSchema);
+module.exports = mongoose.model('boards', boardSchema);
