@@ -24,14 +24,17 @@ export default function mainPage() {
           Components to be added:
           <ol>
             <li>Canvas component?</li>
-            <li>Chatbox component</li>
+            <li>Chatbox component with sockets</li>
             <li>Rules Component</li>
             <li>Game list Component</li>
             <li>Profile component</li>
+            <li>Sockets character data</li>
             <li>
               Things to do:
               <ol>
-                Create Profile Page
+                1.Create Profile Page
+                2. Image
+                3. Editing
                 <Checkbox />
               </ol>
               <ol>

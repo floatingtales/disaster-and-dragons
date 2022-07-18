@@ -33,6 +33,7 @@ class UserController extends BaseController {
       return res.json({ newUser, token });
     } catch (err) {
       console.log(err);
+      return res.status(500).send('There was an error in the server');
     }
   }
 
@@ -57,6 +58,7 @@ class UserController extends BaseController {
       res.send('Wrong password');
     } catch (err) {
       console.log('error:', err);
+      return res.status(500).send('There was an error in the server');
     }
   }
 
