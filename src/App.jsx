@@ -7,6 +7,7 @@ export default function App() {
   const [loginorsignup, setLoginorsignup] = useState('signUp');
   useEffect(() => {
     console.log(loginorsignup);
+    // check the jwt thorugh the backend
   }, [loginorsignup]);
   return (
     <div>

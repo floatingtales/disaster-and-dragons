@@ -60,6 +60,7 @@ export default function Login({ setLoginorsignup }) {
         <TextField
           style={{ width: '300px' }}
           required
+          type="password"
           name="password"
           label="Required"
           placeholder="Password"
