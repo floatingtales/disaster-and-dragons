@@ -2,16 +2,15 @@ const express = require('express');
 
 const router = express.Router();
 
-class UsersRoutes {
+class CharacterRoutes {
   constructor(controller, authMiddleware) {
     this.controller = controller;
     this.authMiddleware = authMiddleware;
   }
 
   routes() {
-    /* axios routes */
-    router.post('/signup', this.controller.signup.bind(this.controller));
-    router.post('/login', this.controller.login.bind(this.controller));
+    /* no auth routes */
+    router.get('/test', this.controller.test.bind(this.controller));
     /* auth routes */
     router.use(this.authMiddleware);
 
@@ -19,4 +18,4 @@ class UsersRoutes {
   }
 }
 
-module.exports = UsersRoutes;
+module.exports = CharacterRoutes;

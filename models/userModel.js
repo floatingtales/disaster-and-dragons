@@ -15,14 +15,13 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  friends: {
-    type: Array,
-  },
-  profileImg: {
+  friends: [this],
+  profile_img: {
     type: String,
+    default: '/profile/default.jpg',
   },
 }, {
   timestamps: true,
 });
 
-module.exports = mongoose.model('userModel', userSchema);
+module.exports = mongoose.model('users', userSchema);
