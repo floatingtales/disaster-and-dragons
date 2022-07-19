@@ -15,22 +15,27 @@ const connectDB = require('./config/db');
 
 connectDB();
 
+const webpackConfig = require('./webpack_conf/webpack.dev');
+
 const userModel = require('./models/userModel');
 const boardModel = require('./models/boardModel');
-
-const webpackConfig = require('./webpack_conf/webpack.dev');
+const characterModel = require('./models/characterModel');
 
 const UserController = require('./controllers/userController');
 const BoardController = require('./controllers/boardController');
+const CharacterController = require('./controllers/characterController');
 
 const UserRoutes = require('./routes/userRoutes');
 const BoardRoutes = require('./routes/boardRoutes');
+const CharacterRoutes = require('./routes/characterRoutes');
 
 const userController = new UserController(userModel);
 const boardController = new BoardController(boardModel);
+const characterController = new CharacterController(characterModel);
 
 const userRoutes = new UserRoutes(userController, authMiddleware).routes();
 const boardRoutes = new BoardRoutes(boardController, authMiddleware).routes();
+const characterRoutes = new CharacterRoutes(characterController, authMiddleware).routes();
 
 // Initialise Express instance
 const app = express();
@@ -67,6 +72,7 @@ if (env === 'development') {
 
 app.use('/users', userRoutes);
 app.use('/boards', boardRoutes);
+app.use('/characters', characterRoutes);
 
 app.get('/', (req, res) => {
   console.log(req.url);

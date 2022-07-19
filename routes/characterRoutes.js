@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-class BoardRoutes {
+class CharacterRoutes {
   constructor(controller, authMiddleware) {
     this.controller = controller;
     this.authMiddleware = authMiddleware;
@@ -18,4 +18,4 @@ class BoardRoutes {
   }
 }
 
-module.exports = BoardRoutes;
+module.exports = CharacterRoutes;
