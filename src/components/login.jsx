@@ -7,30 +7,38 @@ import LoginIcon from '@mui/icons-material/Login';
 import axios from 'axios';
 
 export default function Login({ setLoginorsignup }) {
-  const [email, setEmail] = useState('');
+  const [loginCredentials, setloginCredentials] = useState('');
   const [password, setPassword] = useState('');
-  // data to be used for axios call
-  const data = { email, password };
+
   // saving email and password in the state
-  const settingEmail = (event) => {
+  const handleLoginChange = (event) => {
     const newEmail = event.target.value;
-    setEmail(newEmail);
+    setloginCredentials(newEmail);
   };
-  const settingPassword = (event) => {
+  const handlePasswordChange = (event) => {
     const newPassword = event.target.value;
     setPassword(newPassword);
   };
   // what happens on click login
   const handleLogin = async () => {
-    const checkLogin = await axios.post('/users/login', data);
+    const data = { loginCredentials, password };
+
+    let checkLogin;
+    try {
+      checkLogin = await axios.post('/users/login', data);
+    } catch (err) {
+      console.log(err.response.data.msg);
+      return;
+    }
     // I am getting the token back in checkLogin.data
     console.log('checkLogin data', checkLogin);
     // if password is wrog the messsage will be here
     console.log(checkLogin.data);
     // if password is right the token will be here
+
     console.log(checkLogin.data.accessToken);
     localStorage.setItem('authorisedToken', checkLogin.data.accessToken);
-    // check fo0r authentication before going into mainPage?
+    // check for authentication before going into mainPage?
     setLoginorsignup('mainPage');
   };
 
@@ -55,7 +63,7 @@ export default function Login({ setLoginorsignup }) {
           name="email"
           label="Required"
           placeholder="Email"
-          onChange={settingEmail}
+          onChange={handleLoginChange}
         />
         <TextField
           style={{ width: '300px' }}
@@ -64,7 +72,7 @@ export default function Login({ setLoginorsignup }) {
           name="password"
           label="Required"
           placeholder="Password"
-          onChange={settingPassword}
+          onChange={handlePasswordChange}
         />
         <Button variant="contained" onClick={handleLogin}>
           Login
