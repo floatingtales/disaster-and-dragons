@@ -7,7 +7,7 @@ const authenticateJWT = () => async (req, res, next) => {
     const authToken = req.header('Authorization').replace('Bearer ', '');
     const verifiedToken = jwt.verify(authToken, process.env.JWT_SECRET);
     req.user = verifiedToken;
-    next();
+    return next();
   } catch (err) {
     console.log(err);
     return res.json({ message: 'JWT expired' });
