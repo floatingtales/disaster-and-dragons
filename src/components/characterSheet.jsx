@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import { flexbox } from '@mui/system';
-import LoginIcon from '@mui/icons-material/Login';
-import axios from 'axios';
-import { Checkbox } from '@mui/material';
-import Taskbar from './taskbar.jsx';
 import PhysicalInfo from './physicalInfo.jsx';
+import CharacterStats from './charStats.jsx';
+import CharInfo from './charInfo.jsx';
+import Skills from './skills.jsx';
 
 export default function CharacterSheet() {
   // Saving the data that will be manipulated with states
@@ -19,7 +15,13 @@ export default function CharacterSheet() {
     Wisdom: 0,
     Charisma: 0,
   });
-  const [charInfo, setCharInfo] = useState({});
+  const [charInfo, setCharInfo] = useState({
+    Name: '',
+    Race: '',
+    Level: 0,
+    Class: '',
+    Background: '',
+  });
   const [physicalInfo, setPhysicalInfo] = useState({
     ArmorClass: 0,
     Health: 0,
@@ -29,13 +31,19 @@ export default function CharacterSheet() {
   const [skills, setSkills] = useState({});
   const [attacks, setAttacks] = useState({});
   const [items, setItems] = useState({});
+
+  useEffect(() => {
+    // might make axios call on change OR might do it on save
+    // take the data and push into the data base with an axios call
+    console.log(stats, charInfo, physicalInfo, skills, items);
+  }, [stats, charInfo, physicalInfo, skills, items]);
   return (
     <div>
       <h1>This is the character sheet</h1>
       <Box
         sx={{
-          height: '750px',
-          width: '750px',
+          height: '100vh',
+          width: '100vw',
           border: 'solid',
           borderColor: 'black',
           borderRadius: '16px',
@@ -45,7 +53,10 @@ export default function CharacterSheet() {
           alignItems: 'center',
         }}
       >
+        <CharInfo charInfo={charInfo} setCharInfo={setCharInfo} />
         <PhysicalInfo setPhysicalInfo={setPhysicalInfo} physicalInfo={physicalInfo} />
+        <CharacterStats setStats={setStats} stats={stats} />
+        <Skills setSkills={setSkills} skill={skills} />
       </Box>
     </div>
 

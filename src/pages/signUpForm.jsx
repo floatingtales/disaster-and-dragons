@@ -64,6 +64,7 @@ export default function SignUpForm({ setLoginorsignup }) {
         <TextField
           style={{ width: '300px' }}
           required
+          type="password"
           name="password"
           label="Required"
           placeholder="Password"

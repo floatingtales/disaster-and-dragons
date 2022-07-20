@@ -1,21 +1,13 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import { flexbox } from '@mui/system';
-import LoginIcon from '@mui/icons-material/Login';
-import axios from 'axios';
-import { Checkbox, InputAdornment } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import { InputAdornment } from '@mui/material';
 import SecurityIcon from '@mui/icons-material/Security';
 import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import StarIcon from '@mui/icons-material/Star';
-import Taskbar from './taskbar.jsx';
 
 export default function BackgroundInfo({ physicalInfo, setPhysicalInfo }) {
-  console.log(physicalInfo);
   return (
     <div>
       <h1>This is the physical information component</h1>

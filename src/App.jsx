@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import SignUpForm from './components/signUpForm.jsx';
-import Login from './components/login.jsx';
-import MainPage from './components/mainPage.jsx';
+import SignUpForm from './pages/signUpForm.jsx';
+import Login from './pages/login.jsx';
+import MainPage from './pages/mainPage.jsx';
+import CharacterSheet from './components/characterSheet.jsx';
+import Taskbar from './components/taskbar.jsx';
 
 export default function App() {
   const [loginorsignup, setLoginorsignup] = useState('signUp');
   useEffect(() => {
     console.log(loginorsignup);
-    // check the jwt thorugh the backend
+    // check the jwt through the backend
   }, [loginorsignup]);
   return (
     <div>
+      <Taskbar setLoginorsignup={setLoginorsignup} />
       {loginorsignup === 'signUp' && (
       <SignUpForm loginorsignup={loginorsignup} setLoginorsignup={setLoginorsignup} />
       )}
@@ -18,7 +21,10 @@ export default function App() {
       <Login setLoginorsignup={setLoginorsignup} />
       )}
       {loginorsignup === 'mainPage' && (
-      <MainPage />
+      <MainPage setLoginorsignup={setLoginorsignup} />
+      )}
+      {loginorsignup === 'charSheet' && (
+      <CharacterSheet setLoginorsignup={setLoginorsignup} />
       )}
     </div>
   );
