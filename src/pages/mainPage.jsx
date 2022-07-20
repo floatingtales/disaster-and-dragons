@@ -6,8 +6,6 @@ import { flexbox } from '@mui/system';
 import LoginIcon from '@mui/icons-material/Login';
 import axios from 'axios';
 import { Checkbox } from '@mui/material';
-import Taskbar from './taskbar.jsx';
-import CharacterSheet from './characterSheet.jsx';
 
 // here i will load the game of canvas
 
@@ -16,7 +14,6 @@ import CharacterSheet from './characterSheet.jsx';
 export default function mainPage() {
   return (
     <div>
-      <Taskbar />
       <Box>
         <LoginIcon fontSize="large" />
         <h1>This is the main Page</h1>
@@ -65,7 +62,6 @@ export default function mainPage() {
           </ol>
         </h2>
       </Box>
-      <CharacterSheet />
     </div>
   );
 }
