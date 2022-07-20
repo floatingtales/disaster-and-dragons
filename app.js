@@ -4,16 +4,21 @@ const methodOverride = require('method-override');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
+
 const { resolve } = require('path');
+const socketio = require('socket.io');
 
 require('dotenv').config();
 
 // importing middleware
 const authMiddleware = require('./middleware/auth')();
-
+const socketConfig = require('./sockets/socketConfig');
 const connectDB = require('./config/db');
 
 connectDB();
+
+// Initialise Express instance
+const app = express();
 
 const webpackConfig = require('./webpack_conf/webpack.dev');
 
@@ -37,8 +42,6 @@ const userRoutes = new UserRoutes(userController, authMiddleware).routes();
 const boardRoutes = new BoardRoutes(boardController, authMiddleware).routes();
 const characterRoutes = new CharacterRoutes(characterController, authMiddleware).routes();
 
-// Initialise Express instance
-const app = express();
 // Set the Express view engine to expect EJS templates
 app.set('view engine', 'ejs');
 // Bind cookie parser middleware to parse cookies in requests
@@ -81,9 +84,12 @@ app.get('/', (req, res) => {
 
 app.get('*', (req, res) => {
   console.log(req.url);
-  res.status(404).send('not-found');
+  res.redirect('/');
 });
 
 // Set Express to listen on the given port
 const PORT = process.env.PORT || 3004;
-app.listen(PORT, () => { console.log(`App is listening to port ${PORT}`); });
+const server = app.listen(PORT, () => { console.log(`App is listening to port ${PORT}`); });
+
+const io = socketio(server);
+socketConfig(io);

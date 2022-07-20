@@ -4,6 +4,12 @@ const jwt = require('jsonwebtoken');
 const BaseController = require('./baseController');
 
 class UserController extends BaseController {
+  test(req, res) {
+    console.log(req.url);
+    console.log(this.model);
+    res.send('yay');
+  }
+
   async signup(req, res) {
     console.log(req.body);
     const { username, email, password } = req.body;
@@ -26,6 +32,8 @@ class UserController extends BaseController {
   }
 
   async login(req, res) {
+    console.log(this.model);
+    console.log(req.url);
     const { loginCredentials, password } = req.body;
     // get data from db
     let checkUser;

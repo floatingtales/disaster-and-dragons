@@ -2,14 +2,11 @@ const express = require('express');
 
 const router = express.Router();
 
-class UsersRoutes {
-  constructor(controller, authMiddleware) {
-    this.controller = controller;
-    this.authMiddleware = authMiddleware;
-  }
+const BaseRoutes = require('./baseRoutes');
 
+class UsersRoutes extends BaseRoutes {
   routes() {
-    /* axios routes */
+    /* no auth routes */
     router.post('/signup', this.controller.signup.bind(this.controller));
     router.post('/login', this.controller.login.bind(this.controller));
     /* auth routes */

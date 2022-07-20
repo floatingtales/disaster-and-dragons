@@ -1,7 +1,7 @@
-// sending bear tokens??
 const jwt = require('jsonwebtoken');
 
 const authenticateJWT = () => async (req, res, next) => {
+  console.log(req.url);
   console.log('running in auth.js middleware');
   try {
     const authToken = req.header('Authorization').replace('Bearer ', '');
