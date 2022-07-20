@@ -2,12 +2,9 @@ const express = require('express');
 
 const router = express.Router();
 
-class BoardRoutes {
-  constructor(controller, authMiddleware) {
-    this.controller = controller;
-    this.authMiddleware = authMiddleware;
-  }
+const BaseRoutes = require('./baseRoutes');
 
+class BoardRoutes extends BaseRoutes {
   routes() {
     /* no auth routes */
     router.get('/test', this.controller.test.bind(this.controller));

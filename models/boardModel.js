@@ -11,9 +11,12 @@ const boardSchema = mongoose.Schema({
       required: true,
       unique: true,
     },
-    profileImg: {
+    profile_img: {
       type: String,
     },
+  },
+  chat_logs: {
+    type: Object,
   },
   // will add character details here
 }, {
