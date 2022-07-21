@@ -8,7 +8,6 @@ import PersonIcon from '@mui/icons-material/Person';
 export default function CharInfo() {
   return (
     <div>
-      <h1>This is char info</h1>
       <Box
         sx={{
           display: 'flex',

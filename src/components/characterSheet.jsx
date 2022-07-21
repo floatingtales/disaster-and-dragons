@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import PhysicalInfo from './physicalInfo.jsx';
 import CharacterStats from './charStats.jsx';
 import CharInfo from './charInfo.jsx';
-import Skills from './skills.jsx';
+import Attacks from './attacks.jsx';
 
 export default function CharacterSheet() {
   // Saving the data that will be manipulated with states
@@ -29,34 +29,46 @@ export default function CharacterSheet() {
     Initiative: 0,
   });
   const [skills, setSkills] = useState({});
-  const [attacks, setAttacks] = useState({});
+  const [attacks, setAttacks] = useState([]);
   const [items, setItems] = useState({});
 
   useEffect(() => {
     // might make axios call on change OR might do it on save
     // take the data and push into the data base with an axios call
-    console.log(stats, charInfo, physicalInfo, skills, items);
-  }, [stats, charInfo, physicalInfo, skills, items]);
+    console.log(attacks);
+  }, [attacks]);
   return (
     <div>
-      <h1>This is the character sheet</h1>
       <Box
         sx={{
-          height: '100vh',
-          width: '100vw',
+          height: '800px',
+          width: '1200px',
           border: 'solid',
           borderColor: 'black',
           borderRadius: '16px',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
+          justifyContent: 'space-around',
           alignItems: 'center',
         }}
       >
+        <h1>Character Creation</h1>
+        <br />
         <CharInfo charInfo={charInfo} setCharInfo={setCharInfo} />
-        <PhysicalInfo setPhysicalInfo={setPhysicalInfo} physicalInfo={physicalInfo} />
-        <CharacterStats setStats={setStats} stats={stats} />
-        <Skills setSkills={setSkills} skill={skills} />
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+          }}
+        >
+          <PhysicalInfo setPhysicalInfo={setPhysicalInfo} physicalInfo={physicalInfo} />
+          <Box>
+            <CharacterStats setStats={setStats} stats={stats} />
+            <Attacks setAttacks={setAttacks} attacks={attacks} />
+          </Box>
+
+        </Box>
+        <h1>This is the skills</h1>
       </Box>
     </div>
 

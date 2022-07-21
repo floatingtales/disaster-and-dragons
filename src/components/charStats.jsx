@@ -12,7 +12,6 @@ import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 export default function CharStats({ stats, setStats }) {
   return (
     <div>
-      <h1>This is the character stats</h1>
       <Box
         sx={{
           display: 'flex',

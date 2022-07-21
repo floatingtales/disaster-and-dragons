@@ -10,11 +10,10 @@ import StarIcon from '@mui/icons-material/Star';
 export default function BackgroundInfo({ physicalInfo, setPhysicalInfo }) {
   return (
     <div>
-      <h1>This is the physical information component</h1>
       <Box
         sx={{
           display: 'flex',
-          flexDirection: 'row',
+          flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
         }}
