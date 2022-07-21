@@ -18,6 +18,105 @@ import ChurchTwoToneIcon from '@mui/icons-material/ChurchTwoTone';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 
 export default function Skills({ skills, setSkills }) {
+  const [acrobatics, setAcrobatics] = useState(0);
+  const [arcana, setArcana] = useState(0);
+  const [athletics, setAthletics] = useState(0);
+  const [deception, setDeception] = useState(0);
+  const [history, setHistory] = useState(0);
+  const [insight, setInsight] = useState(0);
+  const [intimidation, setIntimidation] = useState(0);
+  const [medicine, setMedicine] = useState(0);
+  const [nature, setNature] = useState(0);
+  const [perception, setPerception] = useState(0);
+  const [persuasion, setPersuasion] = useState(0);
+  const [religion, setReligion] = useState(0);
+  const [stealth, setStealth] = useState(0);
+
+  const addAcrobatics = (event) => {
+    const { value } = event.target;
+    setAcrobatics(value);
+  };
+  const addArcana = (event) => {
+    const { value } = event.target;
+    setArcana(value);
+  };
+  const addAthletics = (event) => {
+    const { value } = event.target;
+    setAthletics(value);
+  };
+  const addDeception = (event) => {
+    const { value } = event.target;
+    setDeception(value);
+  };
+  const addHistory = (event) => {
+    const { value } = event.target;
+    setHistory(value);
+  };
+  const addInsight = (event) => {
+    const { value } = event.target;
+    setInsight(value);
+  };
+  const addIntimidation = (event) => {
+    const { value } = event.target;
+    setIntimidation(value);
+  };
+  const addMedicine = (event) => {
+    const { value } = event.target;
+    setMedicine(value);
+  };
+  const addNature = (event) => {
+    const { value } = event.target;
+    setNature(value);
+  };
+  const addPerception = (event) => {
+    const { value } = event.target;
+    setPerception(value);
+  };
+  const addPersuasion = (event) => {
+    const { value } = event.target;
+    setPersuasion(value);
+  };
+  const addReligion = (event) => {
+    const { value } = event.target;
+    setReligion(value);
+  };
+  const addStealth = (event) => {
+    const { value } = event.target;
+    setStealth(value);
+  };
+
+  useEffect(() => {
+    console.log('acrobatics', acrobatics);
+    console.log('arcana', arcana);
+    console.log('athletics', athletics);
+    console.log('deception', deception);
+    console.log('history', history);
+    console.log('insight', insight);
+    console.log('intimidation', intimidation);
+    console.log('medicine', medicine);
+    console.log('nature', nature);
+    console.log('perception', perception);
+    console.log('persuasion', persuasion);
+    console.log('religion', religion);
+    console.log('stealth', stealth);
+    const data = {
+      acrobatics,
+      arcana,
+      athletics,
+      deception,
+      history,
+      insight,
+      intimidation,
+      medicine,
+      nature,
+      perception,
+      persuasion,
+      religion,
+      stealth,
+    };
+    setSkills(data);
+  }, [acrobatics, arcana, athletics, deception, history, insight, intimidation, medicine, nature, perception, persuasion, religion, stealth]);
+
   return (
     <div>
       <Box
@@ -46,6 +145,7 @@ export default function Skills({ skills, setSkills }) {
               </InputAdornment>
             ),
           }}
+          onChange={addAcrobatics}
         />
         <TextField
           type="number"
@@ -62,6 +162,7 @@ export default function Skills({ skills, setSkills }) {
               </InputAdornment>
             ),
           }}
+          onChange={addArcana}
         />
         <TextField
           type="number"
@@ -78,6 +179,7 @@ export default function Skills({ skills, setSkills }) {
               </InputAdornment>
             ),
           }}
+          onChange={addAthletics}
         />
         <TextField
           type="number"
@@ -94,6 +196,7 @@ export default function Skills({ skills, setSkills }) {
               </InputAdornment>
             ),
           }}
+          onChange={addDeception}
         />
         <TextField
           type="number"
@@ -110,6 +213,7 @@ export default function Skills({ skills, setSkills }) {
               </InputAdornment>
             ),
           }}
+          onChange={addHistory}
         />
         <TextField
           type="number"
@@ -126,6 +230,7 @@ export default function Skills({ skills, setSkills }) {
               </InputAdornment>
             ),
           }}
+          onChange={addInsight}
         />
         <TextField
           type="number"
@@ -142,6 +247,7 @@ export default function Skills({ skills, setSkills }) {
               </InputAdornment>
             ),
           }}
+          onChange={addIntimidation}
         />
 
         <TextField
@@ -159,6 +265,7 @@ export default function Skills({ skills, setSkills }) {
               </InputAdornment>
             ),
           }}
+          onChange={addMedicine}
         />
         <TextField
           type="number"
@@ -175,6 +282,7 @@ export default function Skills({ skills, setSkills }) {
               </InputAdornment>
             ),
           }}
+          onChange={addNature}
         />
         <TextField
           type="number"
@@ -191,6 +299,7 @@ export default function Skills({ skills, setSkills }) {
               </InputAdornment>
             ),
           }}
+          onChange={addPerception}
         />
         <TextField
           type="number"
@@ -207,6 +316,7 @@ export default function Skills({ skills, setSkills }) {
               </InputAdornment>
             ),
           }}
+          onChange={addPersuasion}
         />
         <TextField
           type="number"
@@ -223,6 +333,7 @@ export default function Skills({ skills, setSkills }) {
               </InputAdornment>
             ),
           }}
+          onChange={addReligion}
         />
         <TextField
           type="number"
@@ -239,8 +350,8 @@ export default function Skills({ skills, setSkills }) {
               </InputAdornment>
             ),
           }}
+          onChange={addStealth}
         />
-
       </Box>
     </div>
   );
