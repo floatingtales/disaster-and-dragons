@@ -57,7 +57,7 @@ export default function SignUpForm({ setLoginorsignup }) {
           style={{ width: '300px' }}
           required
           id="outlined-required"
-          label="Required"
+          label="Email"
           placeholder="Email"
           onChange={settingEmail}
         />
@@ -66,14 +66,16 @@ export default function SignUpForm({ setLoginorsignup }) {
           required
           type="password"
           name="password"
-          label="Required"
+          label="Password"
           placeholder="Password"
           onChange={settingPassword}
         />
         <TextField
           style={{ width: '300px' }}
+          required
           name="userName"
-          placeholder="User Name"
+          label="Username"
+          placeholder="Username"
           onChange={settingUsername}
         />
         <Button variant="contained" onClick={handleSignUp}>

@@ -61,8 +61,8 @@ export default function Login({ setLoginorsignup }) {
           style={{ width: '300px' }}
           required
           name="email"
-          label="Required"
-          placeholder="Email"
+          label="Email or Username"
+          placeholder="Email or Username"
           onChange={handleLoginChange}
         />
         <TextField
@@ -70,7 +70,7 @@ export default function Login({ setLoginorsignup }) {
           required
           type="password"
           name="password"
-          label="Required"
+          label="Password"
           placeholder="Password"
           onChange={handlePasswordChange}
         />
