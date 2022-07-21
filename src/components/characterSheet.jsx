@@ -3,40 +3,34 @@ import Box from '@mui/material/Box';
 import PhysicalInfo from './physicalInfo.jsx';
 import CharacterStats from './charStats.jsx';
 import CharInfo from './charInfo.jsx';
-import Attacks from './attacks.jsx';
+import AttacksAndItems from './attacks&items.jsx';
+import Skills from './skills.jsx';
 
 export default function CharacterSheet() {
   // Saving the data that will be manipulated with states
   const [stats, setStats] = useState({
-    Strength: 0,
-    Dexterity: 0,
-    Constitution: 0,
-    Intelligence: 0,
-    Wisdom: 0,
-    Charisma: 0,
   });
-  const [charInfo, setCharInfo] = useState({
-    Name: '',
-    Race: '',
-    Level: 0,
-    Class: '',
-    Background: '',
-  });
-  const [physicalInfo, setPhysicalInfo] = useState({
-    ArmorClass: 0,
-    Health: 0,
-    Speed: 0,
-    Initiative: 0,
-  });
+  const [charInfo, setCharInfo] = useState({});
+  const [physicalInfo, setPhysicalInfo] = useState([]);
   const [skills, setSkills] = useState({});
   const [attacks, setAttacks] = useState([]);
-  const [items, setItems] = useState({});
+  const [items, setItems] = useState([]);
 
+  useEffect(() => {
+    console.log('character Stats', stats);
+  }, [stats]);
+  useEffect(() => {
+    console.log('Character Information', charInfo);
+  }, [charInfo]);
   useEffect(() => {
     // might make axios call on change OR might do it on save
     // take the data and push into the data base with an axios call
-    console.log(attacks);
-  }, [attacks]);
+    console.log('Attacks', attacks);
+    console.log('Items', items);
+  }, [attacks, items]);
+  useEffect(() => {
+    console.log('Physical Information', physicalInfo);
+  }, [physicalInfo]);
   return (
     <div>
       <Box
@@ -64,13 +58,11 @@ export default function CharacterSheet() {
           <PhysicalInfo setPhysicalInfo={setPhysicalInfo} physicalInfo={physicalInfo} />
           <Box>
             <CharacterStats setStats={setStats} stats={stats} />
-            <Attacks setAttacks={setAttacks} attacks={attacks} />
+            <AttacksAndItems setAttacks={setAttacks} attacks={attacks} items={items} setItems={setItems} />
           </Box>
-
         </Box>
-        <h1>This is the skills</h1>
+        <Skills skills={skills} setSkills={setSkills} />
       </Box>
     </div>
-
   );
 }
