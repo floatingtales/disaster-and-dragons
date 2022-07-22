@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import LoginIcon from '@mui/icons-material/Login';
 import axios from 'axios';
 
-export default function Login({ setLoginorsignup }) {
+export default function Login({ setCurrentPage }) {
   const [loginCredentials, setloginCredentials] = useState('');
   const [password, setPassword] = useState('');
 
@@ -38,7 +38,7 @@ export default function Login({ setLoginorsignup }) {
     console.log(checkLogin.data.accessToken);
     localStorage.setItem('authorisedToken', checkLogin.data.accessToken);
     // check for authentication before going into mainPage?
-    setLoginorsignup('mainPage');
+    setCurrentPage('mainPage');
   };
 
   return (
@@ -60,8 +60,8 @@ export default function Login({ setLoginorsignup }) {
           style={{ width: '300px' }}
           required
           name="email"
-          label="Required"
-          placeholder="Email"
+          label="Email or Username"
+          placeholder="Email or Username"
           onChange={handleLoginChange}
         />
         <TextField
@@ -69,7 +69,7 @@ export default function Login({ setLoginorsignup }) {
           required
           type="password"
           name="password"
-          label="Required"
+          label="Password"
           placeholder="Password"
           onChange={handlePasswordChange}
         />

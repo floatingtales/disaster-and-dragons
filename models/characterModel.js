@@ -1,8 +1,23 @@
 const mongoose = require('mongoose');
 
 const characterSchema = mongoose.Schema({
-  data: {
+  stats: {
     type: Object,
+  },
+  charInfo: {
+    type: Object,
+  },
+  physicalInfo: {
+    type: Object,
+  },
+  skills: {
+    type: Object,
+  },
+  attacks: {
+    type: Array,
+  },
+  items: {
+    type: Array,
   },
 }, {
   timestamps: true,
