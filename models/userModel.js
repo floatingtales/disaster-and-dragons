@@ -15,7 +15,6 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  friends: [this],
   profile_img: {
     type: String,
     default: '/profile/default.jpg',
