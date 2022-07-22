@@ -56,11 +56,11 @@ export default function CharacterSheet() {
   }, [physicalInfo]);
 
   return (
-    <div>
+    <div className="avoidTaskbar">
       <Box
         sx={{
-          height: '800px',
-          width: '1200px',
+          minHeight: '70vh',
+          minwidth: '60vw',
           border: 'solid',
           borderColor: 'black',
           borderRadius: '16px',
@@ -86,8 +86,8 @@ export default function CharacterSheet() {
           </Box>
         </Box>
         <Skills skills={skills} setSkills={setSkills} />
+        <Button onClick={saveData}>Create your avatar</Button>
       </Box>
-      <Button onClick={saveData}>Create your avatar</Button>
     </div>
   );
 }

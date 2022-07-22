@@ -37,7 +37,7 @@ export default function SignUpForm({ setCurrentPage }) {
     setUsername(newUsername);
   };
   return (
-    <div>
+    <div id="signUp">
 
       <Box
         marginX={5}

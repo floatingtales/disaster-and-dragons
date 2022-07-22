@@ -5,6 +5,7 @@ import Login from './pages/login.jsx';
 import MainPage from './pages/tasklist.jsx';
 import CharacterSheet from './components/characterSheet.jsx';
 import Taskbar from './components/taskbar.jsx';
+import GamePage from './pages/gamePage.jsx';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('');
@@ -38,6 +39,9 @@ export default function App() {
       )}
       {currentPage === 'charSheet' && (
       <CharacterSheet setCurrentPage={setCurrentPage} />
+      )}
+      {currentPage === 'game' && (
+      <GamePage />
       )}
     </div>
   );

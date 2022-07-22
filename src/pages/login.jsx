@@ -42,7 +42,7 @@ export default function Login({ setCurrentPage }) {
   };
 
   return (
-    <div>
+    <div id="login">
       <Box
         component="form"
         sx={{
