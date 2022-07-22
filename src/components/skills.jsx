@@ -163,6 +163,7 @@ export default function Skills({ skills, setSkills }) {
             ),
           }}
           onChange={addArcana}
+
         />
         <TextField
           type="number"
