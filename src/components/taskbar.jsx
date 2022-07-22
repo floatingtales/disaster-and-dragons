@@ -5,25 +5,23 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-export default function ButtonAppBar({ setLoginorsignup }) {
+export default function ButtonAppBar({ setCurrentPage }) {
   const goToCharSheet = () => {
-    setLoginorsignup('charSheet');
+    setCurrentPage('charSheet');
   };
+  const logout = () => null;
   return (
-    <div>
-      <Box>
-        <AppBar>
-          <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Disaster And Dragons
-            </Typography>
-            <Button color="inherit" onClick={goToCharSheet}>Games</Button>
-            <Button color="inherit">Profile</Button>
-            <Button color="inherit">Profile</Button>
-          </Toolbar>
-        </AppBar>
-      </Box>
-      <h1>Hello</h1>
-    </div>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar>
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Disaster And Dragons
+          </Typography>
+          <Button color="inherit" onClick={goToCharSheet}>Games</Button>
+          <Button color="inherit">Profile</Button>
+          <Button color="inherit" onclick={logout}>Logout</Button>
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 }
