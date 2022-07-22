@@ -7,10 +7,11 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
-export default function ButtonAppBar({ setLoginorsignup }) {
+export default function ButtonAppBar({ setCurrentPage }) {
   const goToCharSheet = () => {
-    setLoginorsignup('charSheet');
+    setCurrentPage('charSheet');
   };
+  const logout = () => null;
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar>
@@ -20,7 +21,7 @@ export default function ButtonAppBar({ setLoginorsignup }) {
           </Typography>
           <Button color="inherit" onClick={goToCharSheet}>Games</Button>
           <Button color="inherit">Profile</Button>
-          <Button color="inherit">Profile</Button>
+          <Button color="inherit" onclick={logout}>Logout</Button>
         </Toolbar>
       </AppBar>
     </Box>

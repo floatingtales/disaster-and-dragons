@@ -6,7 +6,7 @@ import { flexbox } from '@mui/system';
 import LoginIcon from '@mui/icons-material/Login';
 import axios from 'axios';
 
-export default function Login({ setLoginorsignup }) {
+export default function Login({ setCurrentPage }) {
   const [loginCredentials, setloginCredentials] = useState('');
   const [password, setPassword] = useState('');
 
@@ -39,7 +39,7 @@ export default function Login({ setLoginorsignup }) {
     console.log(checkLogin.data.accessToken);
     localStorage.setItem('authorisedToken', checkLogin.data.accessToken);
     // check for authentication before going into mainPage?
-    setLoginorsignup('mainPage');
+    setCurrentPage('mainPage');
   };
 
   return (

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import SignUpForm from './pages/signUpForm.jsx';
 import Login from './pages/login.jsx';
 import MainPage from './pages/mainPage.jsx';
@@ -6,25 +7,37 @@ import CharacterSheet from './components/characterSheet.jsx';
 import Taskbar from './components/taskbar.jsx';
 
 export default function App() {
-  const [loginorsignup, setLoginorsignup] = useState('signUp');
+  const [currentPage, setCurrentPage] = useState('');
+  useEffect(async () => {
+    let checkIfLogin;
+    try {
+      checkIfLogin = await axios.get('users/loginCheck');
+      if (checkIfLogin) {
+        setCurrentPage('mainPage');
+      }
+    } catch (err) {
+      console.log(err);
+      setCurrentPage('signUp');
+    }
+  }, []);
   useEffect(() => {
-    console.log(loginorsignup);
+    console.log(currentPage);
     // check the jwt through the backend
-  }, [loginorsignup]);
+  }, [currentPage]);
   return (
     <div>
-      <Taskbar setLoginorsignup={setLoginorsignup} />
-      {loginorsignup === 'signUp' && (
-      <SignUpForm loginorsignup={loginorsignup} setLoginorsignup={setLoginorsignup} />
+      <Taskbar setCurrentPage={setCurrentPage} />
+      {currentPage === 'signUp' && (
+      <SignUpForm setCurrentPage={setCurrentPage} />
       )}
-      {loginorsignup === 'login' && (
-      <Login setLoginorsignup={setLoginorsignup} />
+      {currentPage === 'login' && (
+      <Login setCurrentPage={setCurrentPage} />
       )}
-      {loginorsignup === 'mainPage' && (
-      <MainPage setLoginorsignup={setLoginorsignup} />
+      {currentPage === 'mainPage' && (
+      <MainPage setCurrentPage={setCurrentPage} />
       )}
-      {loginorsignup === 'charSheet' && (
-      <CharacterSheet setLoginorsignup={setLoginorsignup} />
+      {currentPage === 'charSheet' && (
+      <CharacterSheet setCurrentPage={setCurrentPage} />
       )}
     </div>
   );

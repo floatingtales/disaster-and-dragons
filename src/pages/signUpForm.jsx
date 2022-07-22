@@ -8,13 +8,13 @@ import FaceIcon from '@mui/icons-material/Face';
 
 import axios from 'axios';
 
-export default function SignUpForm({ setLoginorsignup }) {
+export default function SignUpForm({ setCurrentPage }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
 
   const handleLogin = () => {
-    setLoginorsignup('login');
+    setCurrentPage('login');
   };
   const handleSignUp = async () => {
     // setting the data from signupForm
@@ -22,7 +22,7 @@ export default function SignUpForm({ setLoginorsignup }) {
     // posting this data into the database
     await axios.post('/users/signup', data);
     // changing state to render login page
-    setLoginorsignup('login');
+    setCurrentPage('login');
   };
   const settingEmail = (event) => {
     const newEmail = event.target.value;
