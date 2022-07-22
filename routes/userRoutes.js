@@ -11,6 +11,7 @@ class UsersRoutes extends BaseRoutes {
     router.post('/login', this.controller.login.bind(this.controller));
     /* auth routes */
     router.use(this.authMiddleware);
+    router.get('/loginCheck', this.controller.loginCheck.bind(this.controller));
 
     return router;
   }
