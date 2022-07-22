@@ -30,6 +30,8 @@ class BaseController {
 
   async createOne(req, res) {
     console.log(req.url);
+    console.log(req.body);
+    console.log(req.header);
     const { body } = req;
     let newEntry;
     try {

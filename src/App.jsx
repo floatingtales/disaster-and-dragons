@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SignUpForm from './pages/signUpForm.jsx';
 import Login from './pages/login.jsx';
-import MainPage from './pages/mainPage.jsx';
+import MainPage from './pages/tasklist.jsx';
 import CharacterSheet from './components/characterSheet.jsx';
 import Taskbar from './components/taskbar.jsx';
 

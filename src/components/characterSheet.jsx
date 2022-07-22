@@ -26,6 +26,7 @@ export default function CharacterSheet() {
       attacks,
       items,
     };
+    console.log(data);
     // i need to authenticate and send the JWT token as well
     const token = localStorage.authorisedToken;
     const config = {
@@ -53,6 +54,7 @@ export default function CharacterSheet() {
   useEffect(() => {
     console.log('Physical Information', physicalInfo);
   }, [physicalInfo]);
+
   return (
     <div>
       <Box
