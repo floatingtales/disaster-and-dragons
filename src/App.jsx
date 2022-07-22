@@ -8,17 +8,26 @@ import Taskbar from './components/taskbar.jsx';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('');
-  useEffect(async () => {
-    let checkIfLogin;
-    try {
-      checkIfLogin = await axios.get('users/loginCheck');
-      if (checkIfLogin) {
-        setCurrentPage('mainPage');
+  useEffect(() => {
+    const loginChecker = async () => {
+      const token = localStorage.authorisedToken;
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+      };
+      let checkIfLogin;
+      try {
+        checkIfLogin = await axios.get('users/loginCheck', config);
+        if (!checkIfLogin) {
+          throw new Error('no token');
+        }
+        return setCurrentPage('mainPage');
+      } catch (err) {
+        console.log(err);
+        console.log('this fucked up');
+        return setCurrentPage('signUp');
       }
-    } catch (err) {
-      console.log(err);
-      setCurrentPage('signUp');
-    }
+    };
+    loginChecker();
   }, []);
   useEffect(() => {
     console.log(currentPage);

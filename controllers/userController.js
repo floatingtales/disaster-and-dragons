@@ -63,6 +63,12 @@ class UserController extends BaseController {
     console.log('Password is wrong');
     return res.send('Wrong password');
   }
+
+  loginCheck(req, res) {
+    console.log(req.url);
+    console.log(this.model);
+    res.status(200).json({ msg: 'is logged in' });
+  }
 }
 
 module.exports = UserController;
