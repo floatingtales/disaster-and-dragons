@@ -1,14 +1,54 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import axios from 'axios';
 import { InputAdornment } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 
-export default function CharInfo() {
+export default function CharInfo({ charInfo, setCharInfo }) {
+  const [name, setName] = useState('');
+  const [race, setRace] = useState('');
+  const [level, setLevel] = useState(0);
+  const [className, setClassName] = useState('');
+  const [background, setBackground] = useState('');
+
+  const addName = (event) => {
+    const { value } = event.target;
+    setName(value);
+  };
+  const addRace = (event) => {
+    const { value } = event.target;
+    setRace(value);
+  };
+  const addLevel = (event) => {
+    const { value } = event.target;
+    setLevel(value);
+  };
+  const addClassName = (event) => {
+    const { value } = event.target;
+    setClassName(value);
+  };
+  const addBackground = (event) => {
+    const { value } = event.target;
+    setBackground(value);
+  };
+  useEffect(() => {
+    console.log('Name', name);
+    console.log('Race', race);
+    console.log('level', level);
+    console.log('Class', className);
+    console.log('Background', background);
+    const data = {
+      name,
+      race,
+      level,
+      className,
+      background,
+    };
+    setCharInfo(data);
+  }, [name, race, level, className, background]);
+
   return (
     <div>
-      <h1>This is char info</h1>
       <Box
         sx={{
           display: 'flex',
@@ -27,6 +67,7 @@ export default function CharInfo() {
             },
           }}
           name="Name"
+          onChange={addName}
         />
         <TextField
           label="Race"
@@ -37,6 +78,7 @@ export default function CharInfo() {
             },
           }}
           name="Race"
+          onChange={addRace}
         />
         <TextField
           type="number"
@@ -48,6 +90,7 @@ export default function CharInfo() {
             },
           }}
           name="Level"
+          onChange={addLevel}
         />
         <TextField
           label="Class"
@@ -58,6 +101,7 @@ export default function CharInfo() {
             },
           }}
           name="Class"
+          onChange={addClassName}
         />
         <TextField
           label="Background"
@@ -68,6 +112,7 @@ export default function CharInfo() {
             },
           }}
           name="Background"
+          onChange={addBackground}
         />
       </Box>
     </div>

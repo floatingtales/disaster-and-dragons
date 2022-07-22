@@ -8,7 +8,6 @@ class CharacterRoutes extends BaseRoutes {
   routes() {
     /* no auth routes */
     router.get('/test', this.controller.test.bind(this.controller));
-
     /* auth routes */
     router.use(this.authMiddleware);
     router.get('/getAllChar', this.controller.getAll.bind(this.controller));
