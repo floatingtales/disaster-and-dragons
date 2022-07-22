@@ -58,39 +58,39 @@ export default function AttacksAndItems({
     };
     setItems((items) => [...items, item]);
   };
+
+  const deleteAttack = (event) => {
+    const { value } = event.target;
+    const newArray = [...attacks];
+    console.log('before splice', newArray);
+    newArray.splice(value, 1);
+    console.log('after splice', newArray);
+    setAttacks(newArray);
+  };
+  const deleteItem = (event) => {
+    const { value } = event.target;
+    const newArray = [...items];
+    console.log('before splice', newArray);
+    newArray.splice(value, 1);
+    console.log('after splice', newArray);
+    setItems(newArray);
+  };
+
   const attackList = attacks.map((attack, index) => (
     <div>
       <div>{attack.attackName}</div>
       <div>{attack.damage}</div>
       <div>{attack.type}</div>
-      <Button value={index}>Delete Attack</Button>
+      <Button onClick={deleteAttack} value={index}>Delete Attack</Button>
     </div>
   ));
 
-  /// ////////to delete attack
-  // const deleteAttack = (event) => {
-  //   const { value } = event.target;
-  //   console.log(attacks[value]);
-  //   const newArray = attacks;
-  //   newArray.splice(value, 1);
-  //   setAttacks(newArray);
-  // };
-  // const attackList = [];
-  // useEffect(() => {
-  //   const attackList = attacks.map((attack, index) => (
-  //     <div>
-  //       <div>{attack.attackName}</div>
-  //       <div>{attack.damage}</div>
-  //       <div>{attack.type}</div>
-  //       <Button value={index} onClick={deleteAttack}>Delete Attack</Button>
-  //     </div>
-  //   ));
-  // }, [attacks]);
   const itemList = items.map((item, index) => (
     <Box>
       <div>{item.itemName}</div>
       <div>{item.quantity}</div>
       <div>{item.itemDescription}</div>
+      <Button onClick={deleteItem} value={index}>Delete Item</Button>
     </Box>
   ));
 
