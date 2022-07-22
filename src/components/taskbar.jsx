@@ -9,7 +9,10 @@ export default function ButtonAppBar({ setCurrentPage }) {
   const goToCharSheet = () => {
     setCurrentPage('charSheet');
   };
-  const logout = () => null;
+  const logout = () => {
+    localStorage.clear();
+    setCurrentPage('signup');
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar>
