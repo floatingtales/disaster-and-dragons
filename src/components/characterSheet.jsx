@@ -26,6 +26,7 @@ export default function CharacterSheet() {
       attacks,
       items,
     };
+    console.log(data);
     // i need to authenticate and send the JWT token as well
     const token = localStorage.authorisedToken;
     const config = {
@@ -53,12 +54,13 @@ export default function CharacterSheet() {
   useEffect(() => {
     console.log('Physical Information', physicalInfo);
   }, [physicalInfo]);
+
   return (
-    <div>
+    <div className="avoidTaskbar">
       <Box
         sx={{
-          height: '800px',
-          width: '1200px',
+          minHeight: '70vh',
+          minwidth: '60vw',
           border: 'solid',
           borderColor: 'black',
           borderRadius: '16px',
@@ -84,8 +86,8 @@ export default function CharacterSheet() {
           </Box>
         </Box>
         <Skills skills={skills} setSkills={setSkills} />
+        <Button onClick={saveData}>Create your avatar</Button>
       </Box>
-      <Button onClick={saveData}>Create your avatar</Button>
     </div>
   );
 }

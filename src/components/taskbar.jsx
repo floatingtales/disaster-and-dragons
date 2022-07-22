@@ -9,6 +9,9 @@ export default function ButtonAppBar({ setCurrentPage }) {
   const goToCharSheet = () => {
     setCurrentPage('charSheet');
   };
+  const goToGame = () => {
+    setCurrentPage('game');
+  };
   const logout = () => {
     localStorage.clear();
     setCurrentPage('signup');
@@ -20,8 +23,8 @@ export default function ButtonAppBar({ setCurrentPage }) {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Disaster And Dragons
           </Typography>
-          <Button color="inherit" onClick={goToCharSheet}>Games</Button>
-          <Button color="inherit">Profile</Button>
+          <Button color="inherit" onClick={goToCharSheet}>Character Sheet</Button>
+          <Button color="inherit" onClick={goToGame}>Game</Button>
           <Button color="inherit" onclick={logout}>Logout</Button>
         </Toolbar>
       </AppBar>

@@ -3,3 +3,18 @@ body {
   display: flex;
   justify-content: center;
 }
+
+#signUp,
+#login {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.avoidTaskbar {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
