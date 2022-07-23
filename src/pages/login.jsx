@@ -28,16 +28,8 @@ export default function Login({ setCurrentPage }) {
       return;
     }
     const { accessToken, username } = checkLogin.data;
-    // I am getting the token back in checkLogin.data
-    console.log('checkLogin data', checkLogin);
-    // if password is wrog the messsage will be here
-    console.log(checkLogin.data);
-    // if password is right the token will be here
-
-    console.log(checkLogin.data.accessToken);
     localStorage.setItem('authorisedToken', accessToken);
     localStorage.setItem('username', username);
-    // check for authentication before going into mainPage?
     setCurrentPage('mainPage');
   };
 

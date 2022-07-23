@@ -13,13 +13,8 @@ export default function SignUpForm({ setCurrentPage }) {
     setCurrentPage('login');
   };
   const handleSignUp = async () => {
-    // setting the data from signupForm
     const data = { email, password, username };
-    // posting this data into the database
-    console.log(data);
     const response = await axios.post('/users/signup', data);
-    console.log(response);
-    // changing state to render login page
     const { token, username: gotUsername } = response.data;
     localStorage.setItem('authorisedToken', token);
     localStorage.setItem('username', gotUsername);
