@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SignUpForm from './pages/signUpForm.jsx';
 import Login from './pages/login.jsx';
-import MainPage from './pages/tasklist.jsx';
+import MainPage from './pages/mainPage.jsx';
 import CharacterSheet from './components/characterSheet.jsx';
 import Taskbar from './components/taskbar.jsx';
 import GamePage from './pages/gamePage.jsx';

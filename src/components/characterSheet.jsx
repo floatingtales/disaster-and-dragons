@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
-import Alert, { Button } from '@mui/material';
+import { Alert, Box, Button } from '@mui/material';
 import axios from 'axios';
-import AlertTitle from '@mui/material/AlertTitle';
 import PhysicalInfo from './physicalInfo.jsx';
 import CharacterStats from './charStats.jsx';
 import CharInfo from './charInfo.jsx';

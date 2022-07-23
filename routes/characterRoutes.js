@@ -14,7 +14,7 @@ class CharacterRoutes extends BaseRoutes {
     router.use(this.authMiddleware);
     router.post('/createChar', this.controller.createOne.bind(this.controller));
     router.get('/getByIdChar/:id', this.controller.getOne.bind(this.controller));
-    router.get('/getCharData', this.controller.charData.bind(this.controller));
+    router.get('/getCharData', this.controller.getAll.bind(this.controller));
 
     return router;
   }

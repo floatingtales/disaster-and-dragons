@@ -7,7 +7,7 @@ const boardSchema = mongoose.Schema({
     type: String,
   },
   chat_logs: {
-    type: Object,
+    type: Array,
   },
   characters: {
     type: Array,

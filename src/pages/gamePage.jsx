@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import axios from 'axios';
 import CharacterSheet from '../components/characterSheet.jsx';
 import DisplayChar from '../components/displayChar.jsx';
+import ChatBox from '../components/chatBox.jsx';
 
 export default function GamePage() {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -34,32 +35,7 @@ export default function GamePage() {
         alignItems: 'center',
       }}
       >
-        <h1>Chat</h1>
-        <Box sx={{
-          height: '65%', width: '95%', border: 'solid', paddingBottom: '5px',
-        }}
-        >
-          Chat display box
-        </Box>
-        <h3>Chatbox</h3>
-        <TextField
-          sx={{
-            height: '30%',
-            width: '95%',
-          }}
-          label="Chat input box"
-          multiline
-          rows={4}
-          defaultValue="Type here"
-          // How to make this icon into a button?
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <SendRoundedIcon sx={{ border: 'solid' }} />
-              </InputAdornment>
-            ),
-          }}
-        />
+        <ChatBox />
       </Box>
 
       {/* box for character side */}

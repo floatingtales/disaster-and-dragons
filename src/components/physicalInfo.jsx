@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { InputAdornment } from '@mui/material';
-import SecurityIcon from '@mui/icons-material/Security';
-import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
-import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
-import StarIcon from '@mui/icons-material/Star';
+import { Box, TextField, InputAdornment } from '@mui/material';
+import { Security, HealthAndSafety, Star } from '@mui/icons-material';
 
 export default function BackgroundInfo({ physicalInfo, setPhysicalInfo }) {
   const [armorClass, setArmorClass] = useState(0);
@@ -79,7 +74,7 @@ export default function BackgroundInfo({ physicalInfo, setPhysicalInfo }) {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <SecurityIcon />
+                  <Security />
                 </InputAdornment>
               ),
             }}
@@ -110,7 +105,7 @@ export default function BackgroundInfo({ physicalInfo, setPhysicalInfo }) {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <HealthAndSafetyIcon />
+                  <HealthAndSafety />
                 </InputAdornment>
               ),
             }}
@@ -140,7 +135,7 @@ export default function BackgroundInfo({ physicalInfo, setPhysicalInfo }) {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <DirectionsRunIcon />
+                  <DirectionsRun />
                 </InputAdornment>
               ),
             }}
@@ -170,7 +165,7 @@ export default function BackgroundInfo({ physicalInfo, setPhysicalInfo }) {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <StarIcon />
+                  <Star />
                 </InputAdornment>
               ),
             }}

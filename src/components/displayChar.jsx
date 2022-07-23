@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react'; import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import React, { useState, useEffect } from 'react';
 import {
-  InputAdornment, Typography, Dialog, DialogTitle, DialogContent,
+  Box, Button, InputAdornment, TextField, Typography, Dialog, DialogTitle, DialogContent,
   DialogContentText, DialogActions,
 } from '@mui/material';
-import Button from '@mui/material/Button';
+
 import axios from 'axios';
 
 export default function DisplayChar() {

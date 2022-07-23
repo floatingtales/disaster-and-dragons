@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import { flexbox } from '@mui/system';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import FaceIcon from '@mui/icons-material/Face';
+import { Box, TextField, Button } from '@mui/material';
+import { Face } from '@mui/icons-material';
 
 import axios from 'axios';
 
@@ -17,12 +13,12 @@ export default function SignUpForm({ setCurrentPage }) {
     setCurrentPage('login');
   };
   const handleSignUp = async () => {
-    // setting the data from signupForm
     const data = { email, password, username };
-    // posting this data into the database
-    await axios.post('/users/signup', data);
-    // changing state to render login page
-    setCurrentPage('login');
+    const response = await axios.post('/users/signup', data);
+    const { token, username: gotUsername } = response.data;
+    localStorage.setItem('authorisedToken', token);
+    localStorage.setItem('username', gotUsername);
+    setCurrentPage('mainPage');
   };
   const settingEmail = (event) => {
     const newEmail = event.target.value;
@@ -52,7 +48,7 @@ export default function SignUpForm({ setCurrentPage }) {
           backgroundColor: 'bisque',
         }}
       >
-        <FaceIcon fontSize="large" />
+        <Face fontSize="large" />
         <TextField
           style={{ width: '300px' }}
           required
