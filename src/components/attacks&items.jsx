@@ -194,7 +194,6 @@ export default function AttacksAndItems({
             >
               {itemList}
             </Box>
-
           </Box>
         </Box>
       </Box>

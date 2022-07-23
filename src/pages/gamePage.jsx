@@ -9,20 +9,17 @@ import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import CharacterSheet from '../components/characterSheet.jsx';
+import DisplayChar from '../components/displayChar.jsx';
 
 export default function GamePage() {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [charData, setCharData] = useState();
+  useEffect(() => {
+    console.log('CharData', charData);
+  }, [charData]);
 
   // get the data from the db
-  const getCharData = async () => {
-    // getting auth token
-    const token = localStorage.authorisedToken;
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
-    };
-    const charData = await axios.get('/characters/getCharData', config);
-    console.log('Recieved char data in gamePage', charData);
-  };
+
   const handleCreateChar = () => {
     setDialogOpen(true);
   };
@@ -94,7 +91,7 @@ export default function GamePage() {
           <CharacterSheet />
         </Dialog>
         <Box sx={{ height: '80%', width: '95%', border: 'solid' }}>
-          <Button onClick={getCharData}>Get All Adventurers</Button>
+          <DisplayChar />
         </Box>
 
       </Box>
