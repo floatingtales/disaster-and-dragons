@@ -10,8 +10,8 @@ export default function ChatBox() {
     const getAllChats = async () => {
       let allChats;
       try {
-        allChats = await axios.get('/board/allChats');
-        //        setChatLogs(allChats);
+        // allChats = await axios.get('/boards/allChats/${name}');
+        // setChatLogs(allChats);
       } catch (err) {
         console.log(err);
       }
@@ -19,12 +19,15 @@ export default function ChatBox() {
     getAllChats();
   }, []);
 
-  const chatData = chatLogs.map((chat) => (
-    <div>
-      {chat.username}
-      {chat.chatMsg}
-    </div>
-  ));
+  const chatData = chatLogs.map((chat) => {
+    const allText = chat.chatMsg.split('\n').map((lines) => <p>{lines}</p>);
+    return (
+      <div>
+        {chat.username}
+        {allText}
+      </div>
+    );
+  });
 
   return (
     <div id="chatBox">
