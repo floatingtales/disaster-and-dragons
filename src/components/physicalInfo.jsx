@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Box, TextField, InputAdornment } from '@mui/material';
-import { Security, HealthAndSafety, Star } from '@mui/icons-material';
+import {
+  Security, HealthAndSafety, Star, DirectionsRun,
+} from '@mui/icons-material';
 
 export default function BackgroundInfo({ physicalInfo, setPhysicalInfo }) {
   const [armorClass, setArmorClass] = useState(0);
