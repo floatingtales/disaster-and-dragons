@@ -6,6 +6,7 @@ import MainPage from './pages/tasklist.jsx';
 import CharacterSheet from './components/characterSheet.jsx';
 import Taskbar from './components/taskbar.jsx';
 import GamePage from './pages/gamePage.jsx';
+import ChatBox from './components/chatBox.jsx';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('');
@@ -51,6 +52,9 @@ export default function App() {
       )}
       {currentPage === 'game' && (
       <GamePage />
+      )}
+      {currentPage === 'chat' && (
+      <ChatBox />
       )}
     </div>
   );
