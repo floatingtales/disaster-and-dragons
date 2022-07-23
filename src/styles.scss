@@ -19,6 +19,26 @@ body {
   align-items: center;
 }
 
+#chatBox {
+  display: flex;
+  width: 50vw;
+  height: 100vh;
+  justify-content: flex-start;
+  align-items: flex-end;
+  background-color: aquamarine;
+}
+
+#textInput {
+  display: "flex";
+  justify-content: "center";
+  width: 95%;
+  margin: 1em;
+}
+
+#chatText {
+  display: flex;
+  width: 100%;
+  justify-content: center;
 #gamePage {
   display: flex;
   flex-direction: row;
