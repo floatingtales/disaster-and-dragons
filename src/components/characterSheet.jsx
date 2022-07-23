@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
-import { Button } from '@mui/material';
+import Alert, { Button } from '@mui/material';
 import axios from 'axios';
+import AlertTitle from '@mui/material/AlertTitle';
 import PhysicalInfo from './physicalInfo.jsx';
 import CharacterStats from './charStats.jsx';
 import CharInfo from './charInfo.jsx';
@@ -16,6 +17,7 @@ export default function CharacterSheet() {
   const [skills, setSkills] = useState({});
   const [attacks, setAttacks] = useState([]);
   const [items, setItems] = useState([]);
+  const [alert, setAlert] = useState(false);
 
   const saveData = async () => {
     const data = {
@@ -27,7 +29,8 @@ export default function CharacterSheet() {
       items,
     };
     console.log(data);
-    // i need to authenticate and send the JWT token as well
+    setAlert(true);
+    // getting the jwt token and sending in config for auth.js
     const token = localStorage.authorisedToken;
     const config = {
       headers: { Authorization: `Bearer ${token}` },
