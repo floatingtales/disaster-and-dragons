@@ -57,7 +57,7 @@ export default function TextInput({ chatLogs, setChatLogs }) {
 
   return (
     <div id="textInput">
-      <form noValidate autoComplete="off" onSubmit={sendChat}>
+      <form noValidate autoComplete="off" onSubmit={sendChat} style={{ width: '100%' }}>
         <div id="chatText">
           <TextField
             id="standard-text"

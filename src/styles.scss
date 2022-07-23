@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: pink;
   display: flex;
@@ -23,14 +27,26 @@ body {
   display: flex;
   width: 100%;
   height: 100vh;
-  justify-content: flex-start;
-  flex-direction: column-reverse;
+  justify-content: space-between;
+  flex-direction: column;
   background-color: aquamarine;
 }
 
+#chatDisplay {
+  display: flex;
+  height: 90%;
+  max-height: 90%;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 95%;
+  margin: 1em;
+  overflow-y: scroll;
+}
+
 #textInput {
-  display: "flex";
-  justify-content: "center";
+  display: flex;
+  height: 10%;
+  justify-content: center;
   width: 95%;
   margin: 1em;
 }
@@ -44,4 +60,10 @@ body {
 #gamePage {
   display: flex;
   flex-direction: row;
+}
+
+.flex-col-scroll {
+  flex-grow: 1;
+  overflow: auto;
+  min-height: 100%;
 }
