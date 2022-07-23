@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, TextField, InputAdornment } from '@mui/material';
 import {
-  DirectionsRun, Security, HealthAndSafety, Star,
+  Security, HealthAndSafety, Star, DirectionsRun,
 } from '@mui/icons-material';
 
 export default function BackgroundInfo({ physicalInfo, setPhysicalInfo }) {
