@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import LoginIcon from '@mui/icons-material/Login';
+import { Box, TextField, Button } from '@mui/material';
+import { Login as LoginIcon } from '@mui/icons-material';
 import axios from 'axios';
 
 export default function Login({ setCurrentPage }) {
@@ -29,6 +27,7 @@ export default function Login({ setCurrentPage }) {
       console.log(err.response.data.msg);
       return;
     }
+    const { accessToken, username } = checkLogin.data;
     // I am getting the token back in checkLogin.data
     console.log('checkLogin data', checkLogin);
     // if password is wrog the messsage will be here
@@ -36,7 +35,8 @@ export default function Login({ setCurrentPage }) {
     // if password is right the token will be here
 
     console.log(checkLogin.data.accessToken);
-    localStorage.setItem('authorisedToken', checkLogin.data.accessToken);
+    localStorage.setItem('authorisedToken', accessToken);
+    localStorage.setItem('username', username);
     // check for authentication before going into mainPage?
     setCurrentPage('mainPage');
   };

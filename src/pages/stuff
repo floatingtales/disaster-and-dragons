@@ -1,0 +1,18 @@
+<h1>Chat</h1>
+<Box sx={{
+          height: '65%', width: '95%', border: 'solid', paddingBottom: '5px',
+        }}>
+  Chat display box
+</Box>
+<h3>Chatbox</h3>
+<TextField sx={{
+            height: '30%',
+            width: '95%',
+          }} label="Chat input box" multiline rows={4} defaultValue="Type here" // How to make this icon into a button? InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <SendRoundedIcon sx={{ border: 'solid' }} />
+</InputAdornment>
+),
+}}
+/>

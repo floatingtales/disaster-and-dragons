@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { InputAdornment } from '@mui/material';
-import PersonIcon from '@mui/icons-material/Person';
+import { Box, TextField, InputAdornment } from '@mui/material';
+import { Person } from '@mui/icons-material';
 
 export default function CharInfo({ charInfo, setCharInfo }) {
   const [name, setName] = useState('');

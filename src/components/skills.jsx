@@ -2,20 +2,9 @@ import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { InputAdornment, Typography } from '@mui/material';
-import FitnessCenter from '@mui/icons-material/FitnessCenter';
-import FestivalSharpIcon from '@mui/icons-material/FestivalSharp';
-import BedtimeTwoToneIcon from '@mui/icons-material/BedtimeTwoTone';
-import SportsGymnasticsSharpIcon from '@mui/icons-material/SportsGymnasticsSharp';
-import InterpreterModeIcon from '@mui/icons-material/InterpreterMode';
-import HistoryEduSharpIcon from '@mui/icons-material/HistoryEduSharp';
-import RemoveRedEyeRoundedIcon from '@mui/icons-material/RemoveRedEyeRounded';
-import SportsMmaTwoToneIcon from '@mui/icons-material/SportsMmaTwoTone';
-import MedicalServicesSharpIcon from '@mui/icons-material/MedicalServicesSharp';
-import ForestTwoToneIcon from '@mui/icons-material/ForestTwoTone';
-import PersonSearchTwoToneIcon from '@mui/icons-material/PersonSearchTwoTone';
-import RecordVoiceOverTwoToneIcon from '@mui/icons-material/RecordVoiceOverTwoTone';
-import ChurchTwoToneIcon from '@mui/icons-material/ChurchTwoTone';
-import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+import {
+  FestivalSharp, BedtimeTwoTone, SportsGymnasticsSharp, InterpreterMode, HistoryEduSharp, RemoveRedEyeRounded, SportsMmaTwoTone, MedicalServicesSharp, ForestTwoTone, PersonSearchTwoTone, RecordVoiceOverTwoTone, ChurchTwoTone, VisibilityOffOutlined,
+} from '@mui/icons-material';
 
 export default function Skills({ skills, setSkills }) {
   const [acrobatics, setAcrobatics] = useState(0);
@@ -141,7 +130,7 @@ export default function Skills({ skills, setSkills }) {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <FestivalSharpIcon />
+                <FestivalSharp />
               </InputAdornment>
             ),
           }}
@@ -158,7 +147,7 @@ export default function Skills({ skills, setSkills }) {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <BedtimeTwoToneIcon />
+                <BedtimeTwoTone />
               </InputAdornment>
             ),
           }}
@@ -176,7 +165,7 @@ export default function Skills({ skills, setSkills }) {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SportsGymnasticsSharpIcon />
+                <SportsGymnasticsSharp />
               </InputAdornment>
             ),
           }}
@@ -193,7 +182,7 @@ export default function Skills({ skills, setSkills }) {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <InterpreterModeIcon />
+                <InterpreterMode />
               </InputAdornment>
             ),
           }}
@@ -210,7 +199,7 @@ export default function Skills({ skills, setSkills }) {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <HistoryEduSharpIcon />
+                <HistoryEduSharp />
               </InputAdornment>
             ),
           }}
@@ -227,7 +216,7 @@ export default function Skills({ skills, setSkills }) {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <RemoveRedEyeRoundedIcon />
+                <RemoveRedEyeRounded />
               </InputAdornment>
             ),
           }}
@@ -244,7 +233,7 @@ export default function Skills({ skills, setSkills }) {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SportsMmaTwoToneIcon />
+                <SportsMmaTwoTone />
               </InputAdornment>
             ),
           }}
@@ -262,7 +251,7 @@ export default function Skills({ skills, setSkills }) {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <MedicalServicesSharpIcon />
+                <MedicalServicesSharp />
               </InputAdornment>
             ),
           }}
@@ -279,7 +268,7 @@ export default function Skills({ skills, setSkills }) {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <ForestTwoToneIcon />
+                <ForestTwoTone />
               </InputAdornment>
             ),
           }}
@@ -296,7 +285,7 @@ export default function Skills({ skills, setSkills }) {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <PersonSearchTwoToneIcon />
+                <PersonSearchTwoTone />
               </InputAdornment>
             ),
           }}
@@ -313,7 +302,7 @@ export default function Skills({ skills, setSkills }) {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <RecordVoiceOverTwoToneIcon />
+                <RecordVoiceOverTwoTone />
               </InputAdornment>
             ),
           }}
@@ -330,7 +319,7 @@ export default function Skills({ skills, setSkills }) {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <ChurchTwoToneIcon />
+                <ChurchTwoTone />
               </InputAdornment>
             ),
           }}
@@ -347,7 +336,7 @@ export default function Skills({ skills, setSkills }) {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <VisibilityOffOutlinedIcon />
+                <VisibilityOffOutlined />
               </InputAdornment>
             ),
           }}

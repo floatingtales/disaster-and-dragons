@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { InputAdornment } from '@mui/material';
-import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
-import SignLanguageIcon from '@mui/icons-material/SignLanguage';
-import FortIcon from '@mui/icons-material/Fort';
-import PsychologyIcon from '@mui/icons-material/Psychology';
-import SchoolIcon from '@mui/icons-material/School';
-import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
+import { Box, TextField, InputAdornment } from '@mui/material';
+import {
+  FitnessCenter, SignLanguage, Fort, Psychology, School, RecordVoiceOver,
+} from '@mui/icons-material';
 
 export default function CharStats({ stats, setStats }) {
   const [strength, setStrength] = useState(0);
@@ -93,7 +88,7 @@ export default function CharStats({ stats, setStats }) {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <FitnessCenterIcon />
+                  <FitnessCenter />
                 </InputAdornment>
               ),
             }}
@@ -123,7 +118,7 @@ export default function CharStats({ stats, setStats }) {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <SignLanguageIcon />
+                  <SignLanguage />
                 </InputAdornment>
               ),
             }}
@@ -153,7 +148,7 @@ export default function CharStats({ stats, setStats }) {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <FortIcon />
+                  <Fort />
                 </InputAdornment>
               ),
             }}
@@ -183,7 +178,7 @@ export default function CharStats({ stats, setStats }) {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <PsychologyIcon />
+                  <Psychology />
                 </InputAdornment>
               ),
             }}
@@ -213,7 +208,7 @@ export default function CharStats({ stats, setStats }) {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <SchoolIcon />
+                  <School />
                 </InputAdornment>
               ),
             }}
@@ -243,7 +238,7 @@ export default function CharStats({ stats, setStats }) {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <RecordVoiceOverIcon />
+                  <RecordVoiceOver />
                 </InputAdornment>
               ),
             }}

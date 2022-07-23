@@ -5,8 +5,6 @@ import TextInput from './textInput.jsx';
 export default function ChatBox() {
   const [chatLogs, setChatLogs] = useState([]);
 
-  let chatData;
-
   useEffect(() => {
     // on load retrieve all chats on board
     const getAllChats = async () => {
@@ -21,19 +19,19 @@ export default function ChatBox() {
     getAllChats();
   }, []);
 
-  useEffect(() => {
-    chatData = chatLogs.map((chat) => (
-      <div>
-        {chat.username}
-        {chat.chatMsg}
-      </div>
-    ));
-  }, [chatLogs]);
+  const chatData = chatLogs.map((chat) => (
+    <div>
+      {chat.username}
+      {chat.chatMsg}
+    </div>
+  ));
 
   return (
     <div id="chatBox">
-      <TextInput chatLogs={chatLogs} setChatLogs={setChatLogs} />
-      {chatData}
+      <TextInput chatLogs={chatLogs} setChatLogs={setChatLogs} style={{ height: '30%' }} />
+      <div>
+        {chatData}
+      </div>
     </div>
   );
 }

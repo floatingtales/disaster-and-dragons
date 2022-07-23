@@ -23,12 +23,12 @@ class UserController extends BaseController {
       console.log(newUser);
     } catch (err) {
       console.log(err);
-      return res.status(500).json({ msg: 'error connecting to server' });
+      return res.status(403).json({ msg: 'error connecting to server' });
     }
     const payLoad = { id: newUser.id, userName: newUser.username, email: newUser.email };
     console.log('payload', payLoad);
     const token = jwt.sign(payLoad, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXP });
-    return res.json({ newUser, token });
+    return res.json({ username: newUser.username, token });
   }
 
   async login(req, res) {
@@ -44,11 +44,11 @@ class UserController extends BaseController {
       }
     } catch (err) {
       console.log('error:', err);
-      return res.status(500).json({ msg: 'error connecting to server' });
+      return res.status(403).json({ msg: 'error connecting to server' });
     }
 
     if (!checkUser) {
-      return res.status(500).json({ msg: 'user not found' });
+      return res.status(403).json({ msg: 'user not found' });
     }
 
     // check the password from db and compare using hash.compare
@@ -58,7 +58,8 @@ class UserController extends BaseController {
       // generate jwt
       const payLoad = { id: checkUser.id, userName: checkUser.username, email: checkUser.email };
       const token = jwt.sign(payLoad, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXP });
-      return res.json({ accessToken: token });
+      console.log(checkUser.username);
+      return res.status(200).json({ accessToken: token, username: checkUser.username });
     }
     console.log('Password is wrong');
     return res.send('Wrong password');

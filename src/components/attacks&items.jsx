@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { Button } from '@mui/material';
-import AddBoxIcon from '@mui/icons-material/AddBox';
+import { Box, Button, TextField } from '@mui/material';
+import { AddBox } from '@mui/icons-material';
 
 export default function AttacksAndItems({
   attacks, setAttacks, items, setItems,
@@ -130,7 +128,7 @@ export default function AttacksAndItems({
               onChange={handleType}
             />
             <Button onClick={addAttack}>
-              <AddBoxIcon fontSize="large" />
+              <AddBox fontSize="large" />
             </Button>
           </Box>
           <Box sx={{
@@ -179,7 +177,7 @@ export default function AttacksAndItems({
               onChange={handleItemDescription}
             />
             <Button onClick={addItem}>
-              <AddBoxIcon fontSize="large" />
+              <AddBox fontSize="large" />
             </Button>
           </Box>
           <Box sx={{
