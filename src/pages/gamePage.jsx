@@ -13,10 +13,6 @@ import DisplayChar from '../components/displayChar.jsx';
 
 export default function GamePage() {
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [charData, setCharData] = useState();
-  useEffect(() => {
-    console.log('CharData', charData);
-  }, [charData]);
 
   // get the data from the db
 

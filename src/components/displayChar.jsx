@@ -22,14 +22,13 @@ export default function DisplayChar() {
     const charData = await axios.get('/characters/getCharData', config);
     setCharData(charData.data.data);
   };
-  const openCharDialog = (char) => {
-    console.log('Jesus');
-    console.log(char);
+  const openCharDialog = (event) => {
+    const { value } = event.target;
+    console.log(charData[value]);
   };
   const charList = charData.map((char, index) => (
     <div>
-      {console.log(char)}
-      <Button onClick={openCharDialog(char)}>
+      <Button onClick={openCharDialog} value={index}>
         {' '}
         {index + 1}
         .
