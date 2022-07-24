@@ -6,7 +6,7 @@ import DisplayCharSheet from './displayCharSheet.jsx';
 export default function DisplayChar({ charData, socket, boardName }) {
   const [currentChar, setCurrentChar] = useState([]);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [index, setIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
   useEffect(() => {
     console.log('CharData', charData);
   }, [charData]);
@@ -14,14 +14,11 @@ export default function DisplayChar({ charData, socket, boardName }) {
   const openCharDialog = (event) => {
     const { value } = event.target;
     setCurrentChar(charData[value]);
-    setIndex(value);
+    setCharIndex(value);
     setDialogOpen(true);
   };
   const handleClose = () => {
     setDialogOpen(false);
-  };
-  const editChar = (event) => {
-    const { value } = event.target;
   };
   const deleteChar = (event) => {
     const { value } = event.target;
@@ -38,7 +35,6 @@ export default function DisplayChar({ charData, socket, boardName }) {
       <Button onClick={openCharDialog} value={index}>
         {char.charInfo.name}
       </Button>
-      <Button onClick={editChar} value={index}>Edit</Button>
       <Button onClick={deleteChar} value={index}>Delete</Button>
     </Box>
   ));
@@ -49,7 +45,7 @@ export default function DisplayChar({ charData, socket, boardName }) {
       {charList}
       {/* add individual character dialog here to render based on state charDialog */}
       <Dialog open={dialogOpen} onClose={handleClose} fullWidth maxWidth="xl">
-        <DisplayCharSheet currentChar={currentChar} setCurrentChar={setCurrentChar} index={index} />
+        <DisplayCharSheet currentChar={currentChar} charIndex={charIndex} />
       </Dialog>
     </div>
   );
