@@ -27,6 +27,13 @@ class BoardController extends BaseController {
     const allBoards = await this.model.find();
     return res.json(allBoards);
   }
+
+  async getOne(req, res) {
+    console.log('running in getOne');
+    console.log(req.body);
+    const allBoards = await this.model.find();
+    return res.json(allBoards);
+  }
 }
 
 module.exports = BoardController;
