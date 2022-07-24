@@ -11,10 +11,11 @@ const socketConfig = (io) => {
 
     socket.on('saveChat', async (boardName, chatLogs) => {
       console.log('updating chats:', boardName);
+      console.log(chatLogs);
       const update = await boardModel.updateOne({ boardName }, { $set: { chatLogs } });
       console.log(update);
       const boardData = await boardModel.findOne({ boardName });
-      // update everything in client
+      console.log(boardData);
       io.in(boardName).emit('loadBoard', boardData);
     });
 

@@ -28,6 +28,8 @@ export default function TextInput({ chatLogs, boardName, socket }) {
   const sendChat = (e) => {
     e.preventDefault();
     const currentChats = [...chatLogs];
+    console.log(currentChats);
+    console.log(chatMsg);
     if (chatMsg.split(' ')[0] === '/r') {
       const diceRollMsg = chatMsg.split(' ')[1];
       const rollComputer = 'Rollie';
@@ -51,6 +53,7 @@ export default function TextInput({ chatLogs, boardName, socket }) {
     } else {
       currentChats.push({ username, chatMsg });
     }
+    console.log(currentChats);
     socket.emit('saveChat', boardName, currentChats);
     setChatMsg('');
   };

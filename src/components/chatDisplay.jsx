@@ -7,12 +7,17 @@ export default function ChatDisplay({ chatLogs }) {
   }, [chatLogs]);
 
   const chatData = chatLogs.map((chat) => {
-    const allText = chat.chatMsg.split('\n').map((lines) => <p>{lines}</p>);
+    if (chat.chatMsg) {
+      const allText = chat.chatMsg.split('\n').map((lines) => <p>{lines}</p>);
+      return (
+        <List>
+          {chat.username}
+          {allText}
+        </List>
+      );
+    }
     return (
-      <List>
-        {chat.username}
-        {allText}
-      </List>
+      <div />
     );
   });
 
