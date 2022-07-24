@@ -12,7 +12,7 @@ class BoardRoutes extends BaseRoutes {
     router.get('/allChats/:boardName', this.controller.getOne.bind(this.controller));
     /* auth routes */
     router.use(this.authMiddleware);
-
+    router.post('/createBoard', this.controller.createBoard.bind(this.controller));
     return router;
   }
 }

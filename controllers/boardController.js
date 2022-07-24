@@ -13,6 +13,15 @@ class BoardController extends BaseController {
     await this.model.create({ boardName: 'test' });
     res.json('made test board');
   }
+
+  async createBoard(req, res) {
+    console.log(req.url);
+    console.log(this.model);
+    const name = req.body.boardName;
+    await this.model.create({ boardName: name });
+    // get the id from db to put into storage
+    res.json('made test board');
+  }
 }
 
 module.exports = BoardController;
