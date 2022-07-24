@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Alert, Box, Button, AlertTitle,
+  Box, Button,
 } from '@mui/material';
 import axios from 'axios';
 import PhysicalInfo from './physicalInfo.jsx';
@@ -9,7 +9,9 @@ import CharInfo from './charInfo.jsx';
 import AttacksAndItems from './attacks&items.jsx';
 import Skills from './skills.jsx';
 
-export default function CharacterSheet({ setDialogOpen, setAlert }) {
+export default function CharacterSheet({
+  boardName, socket, setDialogOpen, setAlert,
+}) {
   // Saving the data that will be manipulated with states
   const [stats, setStats] = useState({});
   const [charInfo, setCharInfo] = useState({});
@@ -27,12 +29,7 @@ export default function CharacterSheet({ setDialogOpen, setAlert }) {
       attacks,
       items,
     };
-    // getting the jwt token and sending in config for auth.js
-    const token = localStorage.authorisedToken;
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
-    };
-    const sendData = await axios.post('/characters/createChar', data, config);
+    socket.emit('saveChar', boardName, data);
     setDialogOpen(false);
     setAlert(true);
   };
