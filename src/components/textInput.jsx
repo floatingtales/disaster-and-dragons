@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, TextField } from '@mui/material';
 import { SendRounded } from '@mui/icons-material';
 
-export default function TextInput({ chatLogs, setChatLogs }) {
+export default function TextInput({ chatLogs, boardName, socket }) {
   const username = window.localStorage.getItem('username');
   const [chatMsg, setChatMsg] = useState('');
 
@@ -51,7 +51,7 @@ export default function TextInput({ chatLogs, setChatLogs }) {
     } else {
       currentChats.push({ username, chatMsg });
     }
-    setChatLogs(currentChats);
+    socket.emit('saveChat', boardName, currentChats);
     setChatMsg('');
   };
 

@@ -2,15 +2,12 @@ const boardModel = require('../models/boardModel');
 
 const socketConfig = (io) => {
   io.on('connection', (socket) => {
-    socket.on('dothing', () => {
-      console.log('did thing');
-    });
-
     socket.on('joinBoard', async (boardName) => {
       console.log('joining:', boardName);
       socket.join(boardName);
+      console.log(socket.rooms);
       const boardData = await boardModel.findOne({ boardName });
-      socket.to(boardName).emit('loadBoard', boardData);
+      socket.broadcast.to(boardName).emit('loadBoard', boardData);
     });
 
     socket.on('saveChat', async (boardName, chatLogs) => {
@@ -20,7 +17,7 @@ const socketConfig = (io) => {
       const update = await boardModel.updateOne({ boardName }, { $set: { chatLogs } });
       console.log(update);
       const boardData = await boardModel.findOne({ boardName });
-      socket.to(boardName).emit('loadboard', boardData);
+      socket.broadcast.to(boardName).emit('loadBoard', boardData);
     });
   });
 };
