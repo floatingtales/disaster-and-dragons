@@ -7,7 +7,7 @@ const socketConfig = (io) => {
       socket.join(boardName);
       console.log(socket.rooms);
       const boardData = await boardModel.findOne({ boardName });
-      socket.broadcast.to(boardName).emit('loadBoard', boardData);
+      io.in(boardName).emit('loadBoard', boardData);
     });
 
     socket.on('saveChat', async (boardName, chatLogs) => {
@@ -17,7 +17,7 @@ const socketConfig = (io) => {
       const update = await boardModel.updateOne({ boardName }, { $set: { chatLogs } });
       console.log(update);
       const boardData = await boardModel.findOne({ boardName });
-      socket.broadcast.to(boardName).emit('loadBoard', boardData);
+      io.in(boardName).emit('loadBoard', boardData);
     });
   });
 };
