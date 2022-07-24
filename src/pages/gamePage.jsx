@@ -1,21 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 import {
-  InputAdornment, Typography, Dialog, DialogTitle, DialogContent,
+  Button, Box, TextField, InputAdornment, Typography, Dialog, DialogTitle, DialogContent,
   DialogContentText, DialogActions, Alert, AlertTitle,
 } from '@mui/material';
-import SendRoundedIcon from '@mui/icons-material/SendRounded';
-import Button from '@mui/material/Button';
+import { io } from 'socket.io-client';
+
 import CharacterSheet from '../components/characterSheet.jsx';
 import DisplayChar from '../components/displayChar.jsx';
 import ChatBox from '../components/chatBox.jsx';
 
+const socket = io();
+
 export default function GamePage() {
+  // delete first line if we have the boardname already, for now it's test
+  const boardName = localStorage.getItem('boardName');
+
+  const [chatLogs, setChatLogs] = useState([]);
+  const [charData, setCharData] = useState([]);
+
   const [dialogOpen, setDialogOpen] = useState(false);
   const [alert, setAlert] = useState(false);
 
-  // get the data from the db
+  // socket connection
+  useEffect(() => {
+    socket.emit('joinBoard', boardName);
+  }, []);
+
+  useEffect(() => {
+    // getting data from backend
+    socket.on('loadBoard', (boardData) => {
+      console.log('loading boardData');
+      console.log(boardData);
+      setChatLogs(boardData.chatLogs);
+      setCharData(boardData.characters);
+    });
+  }, [socket]);
 
   const handleCreateChar = () => {
     setDialogOpen(true);
@@ -35,7 +54,7 @@ export default function GamePage() {
         alignItems: 'center',
       }}
       >
-        <ChatBox />
+        <ChatBox boardName={boardName} chatLogs={chatLogs} socket={socket} />
       </Box>
 
       {/* box for character side */}
@@ -66,10 +85,10 @@ export default function GamePage() {
           Enlist Adventurer
         </Button>
         <Dialog open={dialogOpen} onClose={handleClose} fullWidth maxWidth="xl">
-          <CharacterSheet setDialogOpen={setDialogOpen} setAlert={setAlert} />
+          <CharacterSheet boardName={boardName} socket={socket} setDialogOpen={setDialogOpen} setAlert={setAlert} />
         </Dialog>
         <Box sx={{ height: '80%', width: '95%', border: 'solid' }}>
-          <DisplayChar />
+          <DisplayChar charData={charData} />
         </Box>
       </Box>
     </div>
