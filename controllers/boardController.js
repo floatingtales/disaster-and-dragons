@@ -22,6 +22,11 @@ class BoardController extends BaseController {
     // get the id from db to put into storage
     res.json('made test board');
   }
+
+  async getAll(req, res) {
+    const allBoards = await this.model.find();
+    return res.json(allBoards);
+  }
 }
 
 module.exports = BoardController;

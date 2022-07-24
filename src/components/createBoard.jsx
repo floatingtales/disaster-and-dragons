@@ -6,7 +6,6 @@ import axios from 'axios';
 export default function Createboard({ setCurrentPage }) {
   const [boardName, setBoardName] = useState('');
   const goToGamePage = async () => {
-    console.log('value at gotogamepage', boardName);
     const token = localStorage.authorisedToken;
     const config = {
       headers: { Authorization: `Bearer ${token}` },
