@@ -3,7 +3,7 @@ import { Button, Dialog } from '@mui/material';
 
 import DisplayCharSheet from './displayCharSheet.jsx';
 
-export default function DisplayChar({ charData }) {
+export default function DisplayChar({ charData, socket, boardName }) {
   const [currentChar, setCurrentChar] = useState([]);
   const [dialogOpen, setDialogOpen] = useState(false);
   useEffect(() => {
@@ -23,6 +23,11 @@ export default function DisplayChar({ charData }) {
   };
   const deleteChar = (event) => {
     const { value } = event.target;
+    const allChar = [...charData];
+    console.log(allChar);
+    allChar.splice(value, 1);
+    console.log(allChar);
+    socket.emit('deleteChar', boardName, allChar);
   };
   const charList = charData.map((char, index) => (
     <div>

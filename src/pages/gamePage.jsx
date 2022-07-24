@@ -95,7 +95,7 @@ export default function GamePage() {
           <CharacterSheet boardName={boardName} socket={socket} setDialogOpen={setDialogOpen} setAlert={setAlert} />
         </Dialog>
         <Box sx={{ height: '80%', width: '95%', border: 'solid' }}>
-          <DisplayChar charData={charData} />
+          <DisplayChar charData={charData} socket={socket} boardName={boardName} />
         </Box>
       </Box>
     </div>

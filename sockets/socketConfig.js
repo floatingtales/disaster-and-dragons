@@ -30,6 +30,18 @@ const socketConfig = (io) => {
       const boardData = await boardModel.findOne({ boardName });
       io.in(boardName).emit('loadChar', boardData);
     });
+
+    socket.on('deleteChar', async (boardName, characters) => {
+      console.log('deleting a char');
+      const update = await boardModel.updateOne({ boardName }, {
+        $set: {
+          characters,
+        },
+      });
+      console.log(update);
+      const boardData = await boardModel.findOne({ boardName });
+      io.in(boardName).emit('loadChar', boardData);
+    });
   });
 };
 
