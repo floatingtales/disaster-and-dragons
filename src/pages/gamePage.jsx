@@ -3,17 +3,17 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import {
   InputAdornment, Typography, Dialog, DialogTitle, DialogContent,
-  DialogContentText, DialogActions,
+  DialogContentText, DialogActions, Alert, AlertTitle,
 } from '@mui/material';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import Button from '@mui/material/Button';
-import axios from 'axios';
 import CharacterSheet from '../components/characterSheet.jsx';
 import DisplayChar from '../components/displayChar.jsx';
 import ChatBox from '../components/chatBox.jsx';
 
 export default function GamePage() {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [alert, setAlert] = useState(false);
 
   // get the data from the db
 
@@ -49,6 +49,12 @@ export default function GamePage() {
         alignItems: 'center',
       }}
       >
+
+        {alert === true && (
+        <Alert severity="success" onClose={() => { setAlert(false); }}>
+          <AlertTitle>Character Saved</AlertTitle>
+        </Alert>
+        )}
         <h1>Character</h1>
         <Button
           sx={{
@@ -60,12 +66,11 @@ export default function GamePage() {
           Enlist Adventurer
         </Button>
         <Dialog open={dialogOpen} onClose={handleClose} fullWidth maxWidth="xl">
-          <CharacterSheet />
+          <CharacterSheet setDialogOpen={setDialogOpen} setAlert={setAlert} />
         </Dialog>
         <Box sx={{ height: '80%', width: '95%', border: 'solid' }}>
           <DisplayChar />
         </Box>
-
       </Box>
     </div>
   );

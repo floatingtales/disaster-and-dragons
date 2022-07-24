@@ -5,11 +5,12 @@ import {
 } from '@mui/material';
 
 import axios from 'axios';
-import CharacterSheet from './characterSheet.jsx';
+import DisplayCharSheet from './displayCharSheet.jsx';
 
 export default function DisplayChar() {
   const [charData, setCharData] = useState([]);
-  const [charDialog, setCharDialog] = useState(false);
+  const [currentChar, setCurrentChar] = useState([]);
+  const [dialogOpen, setDialogOpen] = useState(false);
   useEffect(() => {
     console.log('CharData', charData);
   }, [charData]);
@@ -25,11 +26,11 @@ export default function DisplayChar() {
   };
   const openCharDialog = (event) => {
     const { value } = event.target;
-    console.log(charData[value]);
-    setCharDialog(true);
+    setCurrentChar(charData[value]);
+    setDialogOpen(true);
   };
   const handleClose = () => {
-    setCharDialog(false);
+    setDialogOpen(false);
   };
   const charList = charData.map((char, index) => (
     <div>
@@ -49,6 +50,9 @@ export default function DisplayChar() {
       <Button onClick={getCharData}>Get All Adventurers</Button>
       {charList}
       {/* add individual character dialog here to render based on state charDialog */}
+      <Dialog open={dialogOpen} onClose={handleClose} fullWidth maxWidth="xl">
+        <DisplayCharSheet currentChar={currentChar} setCurrentChar={setCurrentChar} />
+      </Dialog>
     </div>
   );
 }

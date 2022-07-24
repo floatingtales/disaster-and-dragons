@@ -25,7 +25,7 @@ export default function App() {
         return setCurrentPage('mainPage');
       } catch (err) {
         console.log(err);
-        console.log('this fucked up');
+        console.log('this screwed up');
         return setCurrentPage('signUp');
       }
     };
