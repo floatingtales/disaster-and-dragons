@@ -26,7 +26,7 @@ body {
 #chatBox {
   display: flex;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   justify-content: space-between;
   flex-direction: column;
   background-color: aquamarine;
@@ -64,6 +64,5 @@ body {
 
 .flex-col-scroll {
   flex-grow: 1;
-  overflow: auto;
   min-height: 100%;
 }
