@@ -1,18 +1,27 @@
 import React, { useEffect } from 'react';
-import { Grid, List } from '@mui/material';
+import { Box, Grid, List } from '@mui/material';
 
 export default function ChatDisplay({ chatLogs }) {
   useEffect(() => {
     console.log(chatLogs);
   }, [chatLogs]);
 
-  const chatData = chatLogs.map((chat) => {
-    const allText = chat.chatMsg.split('\n').map((lines) => <p>{lines}</p>);
+  const chatData = chatLogs.map((chat, index) => {
+    const allText = chat.chatMsg.split('\n').map((lines) => <h2>{lines}</h2>);
+    // blocks of differenet colors chat
+    let jesus = '';
+    if (index % 2) {
+      jesus = 'even';
+    } else {
+      jesus = 'odd';
+    }
     return (
-      <List>
+      <Box className={jesus}>
         {chat.username}
+        :
         {allText}
-      </List>
+
+      </Box>
     );
   });
 

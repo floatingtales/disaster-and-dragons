@@ -12,16 +12,17 @@ export default function ButtonAppBar({ setCurrentPage }) {
     setCurrentPage('signUp');
   };
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar>
-        <Toolbar>
-
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <img src="/assets/images/logo.png" height="70px" width="70px" alt="DND logo" onClick={goToMainPage} />
-          </Typography>
-          <Button color="inherit" onClick={logout}>Logout</Button>
-        </Toolbar>
-      </AppBar>
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar>
+          <Toolbar>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} />
+            <Button color="inherit" onClick={logout}>Logout</Button>
+          </Toolbar>
+        </AppBar>
+      </Box>
+      <h1>Hello</h1>
+      <img src="/assets/images/logo.png" height="30%" width="30%" alt="DND logo" onClick={goToMainPage} />
     </Box>
   );
 }

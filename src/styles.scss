@@ -1,12 +1,21 @@
+@font-face {
+  font-family: titleFont;
+  src: url("../public/fonts/JuicyGossipRegular-2OBK3.ttf");
+}
+@font-face {
+  font-family: bodyFont;
+  src: url("../public/fonts/FrostbiteBossFight-dL0Z.ttf");
+}
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #ffffff;
+  font-family: bodyFont;
+  background-color: #cac2b5;
   display: flex;
   justify-content: center;
-  color: #a43317;
+  // color: #a43317;
 }
 
 #signUp,
@@ -30,7 +39,7 @@ body {
   height: 100%;
   justify-content: space-between;
   flex-direction: column;
-  background-color: rgb(244, 160, 160);
+  // background-color: rgb(244, 160, 160);
 }
 
 #chatDisplay {
@@ -66,4 +75,10 @@ body {
 .flex-col-scroll {
   flex-grow: 1;
   min-height: 100%;
+}
+.even {
+  background: #a09dc7;
+}
+.odd {
+  background-color: #d0b3c5;
 }
