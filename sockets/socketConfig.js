@@ -16,7 +16,7 @@ const socketConfig = (io) => {
       console.log(update);
       const boardData = await boardModel.findOne({ boardName });
       console.log(boardData);
-      io.in(boardName).emit('loadBoard', boardData);
+      io.in(boardName).emit('loadChat', boardData);
     });
 
     socket.on('saveChar', async (boardName, characters) => {
@@ -28,7 +28,7 @@ const socketConfig = (io) => {
       });
       console.log(update);
       const boardData = await boardModel.findOne({ boardName });
-      io.in(boardName).emit('loadBoard', boardData);
+      io.in(boardName).emit('loadChar', boardData);
     });
   });
 };

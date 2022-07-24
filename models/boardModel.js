@@ -6,11 +6,13 @@ const boardSchema = mongoose.Schema({
     unique: true,
     type: String,
   },
-  chat_logs: {
+  chatLogs: {
     type: Array,
+    default: [],
   },
   characters: {
     type: Array,
+    default: [],
   },
 }, {
   timestamps: true,
