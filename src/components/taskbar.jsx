@@ -22,7 +22,7 @@ export default function ButtonAppBar({ setCurrentPage }) {
       <AppBar>
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Disaster And Dragons
+            Logo supposed to go here
           </Typography>
           <Button color="inherit" onClick={goToChat}>Chat Room</Button>
           <Button color="inherit" onClick={goToCharSheet}>Character Sheet</Button>
