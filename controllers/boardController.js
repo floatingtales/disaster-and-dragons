@@ -4,7 +4,14 @@ class BoardController extends BaseController {
   test(req, res) {
     console.log(req.url);
     console.log(this.model);
-    res.send('yay');
+    res.json({ boardName: 'test' });
+  }
+
+  async testMake(req, res) {
+    console.log(req.url);
+    console.log(this.model);
+    await this.model.create({ boardName: 'test' });
+    res.json('made test board');
   }
 }
 

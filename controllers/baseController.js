@@ -17,6 +17,8 @@ class BaseController {
 
   async getOne(req, res) {
     console.log(req.url);
+    console.log(req.params);
+    console.log(this.model);
     const { params, body } = req;
     let result;
     try {
@@ -41,14 +43,6 @@ class BaseController {
       return res.status(500).json({ msg: 'error connecting to server' });
     }
     return res.status(200).json({ data: newEntry });
-  }
-
-  async charData(req, res) {
-    console.log('Running in char data');
-    const charData = await this.model.find();
-    // why isnt it sending the data back to my gamePage?
-    res.json({ data: charData });
-    return charData;
   }
 }
 module.exports = BaseController;
