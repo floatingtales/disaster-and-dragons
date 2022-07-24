@@ -1,29 +1,29 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-// import { io } from 'socket.io-client';
+import { io } from 'socket.io-client';
 import TextInput from './textInput.jsx';
 import ChatDisplay from './chatDisplay.jsx';
 
-// const socket = io();
+const socket = io();
 
 export default function ChatBox() {
   localStorage.setItem('boardName', 'test');
   const [chatLogs, setChatLogs] = useState([]);
   const boardName = localStorage.getItem('boardName');
 
+  socket.on('loadBoard', (boardData) => {
+    console.log('loading boardData');
+    console.log(boardData);
+    setChatLogs(boardData.chatLogs);
+  });
+
   useEffect(() => {
-    // on load retrieve all chats on board
-    const getAllChats = async () => {
-      let boardData;
-      try {
-        boardData = await axios.get(`/boards/allChats/${boardName}`);
-        setChatLogs(boardData.chatLogs);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getAllChats();
+    socket.emit('joinBoard', boardName);
   }, []);
+
+  useEffect(() => {
+    socket.emit('saveChat', boardName, chatLogs);
+  }, [chatLogs]);
 
   return (
     <div id="chatBox">

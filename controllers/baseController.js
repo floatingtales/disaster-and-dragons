@@ -17,6 +17,8 @@ class BaseController {
 
   async getOne(req, res) {
     console.log(req.url);
+    console.log(req.params);
+    console.log(this.model);
     const { params, body } = req;
     let result;
     try {
