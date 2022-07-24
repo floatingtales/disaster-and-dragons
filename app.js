@@ -43,6 +43,7 @@ const boardRoutes = new BoardRoutes(boardController, authMiddleware).routes();
 const characterRoutes = new CharacterRoutes(characterController, authMiddleware).routes();
 
 // Set the Express view engine to expect EJS templates
+app.use(express.static('public'));
 app.set('view engine', 'ejs');
 // Bind cookie parser middleware to parse cookies in requests
 app.use(cookieParser());
