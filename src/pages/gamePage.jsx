@@ -13,9 +13,10 @@ const socket = io();
 
 export default function GamePage() {
   // delete first line if we have the boardname already, for now it's test
-  localStorage.setItem('boardName', 'test');
-  const [chatLogs, setChatLogs] = useState([]);
   const boardName = localStorage.getItem('boardName');
+
+  const [chatLogs, setChatLogs] = useState([]);
+  const [charData, setCharData] = useState([]);
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [alert, setAlert] = useState(false);
@@ -31,10 +32,9 @@ export default function GamePage() {
       console.log('loading boardData');
       console.log(boardData);
       setChatLogs(boardData.chatLogs);
+      setCharData(boardData.characters);
     });
   }, [socket]);
-
-  // get the data from the db
 
   const handleCreateChar = () => {
     setDialogOpen(true);
@@ -85,10 +85,10 @@ export default function GamePage() {
           Enlist Adventurer
         </Button>
         <Dialog open={dialogOpen} onClose={handleClose} fullWidth maxWidth="xl">
-          <CharacterSheet setDialogOpen={setDialogOpen} setAlert={setAlert} />
+          <CharacterSheet boardName={boardName} socket={socket} setDialogOpen={setDialogOpen} setAlert={setAlert} />
         </Dialog>
         <Box sx={{ height: '80%', width: '95%', border: 'solid' }}>
-          <DisplayChar />
+          <DisplayChar charData={charData} />
         </Box>
       </Box>
     </div>

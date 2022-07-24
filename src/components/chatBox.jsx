@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import TextInput from './textInput.jsx';
 import ChatDisplay from './chatDisplay.jsx';
 
