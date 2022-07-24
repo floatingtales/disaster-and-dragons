@@ -27,10 +27,18 @@ export default function GamePage() {
 
   useEffect(() => {
     // getting data from backend
+
     socket.on('loadBoard', (boardData) => {
-      console.log('loading boardData');
-      console.log(boardData);
       setChatLogs(boardData.chatLogs);
+      setCharData(boardData.characters);
+    });
+
+    socket.on('loadChat', (boardData) => {
+      console.log('on load chat frontend');
+      setChatLogs(boardData.chatLogs);
+    });
+
+    socket.on('loadChar', (boardData) => {
       setCharData(boardData.characters);
     });
   }, [socket]);
