@@ -12,7 +12,6 @@ import ChatBox from '../components/chatBox.jsx';
 const socket = io();
 
 export default function GamePage() {
-  // delete first line if we have the boardname already, for now it's test
   const boardName = localStorage.getItem('boardName');
 
   const [chatLogs, setChatLogs] = useState([]);
