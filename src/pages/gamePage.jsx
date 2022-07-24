@@ -1,19 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 import {
-  InputAdornment, Typography, Dialog, DialogTitle, DialogContent,
+  Button, Box, TextField, InputAdornment, Typography, Dialog, DialogTitle, DialogContent,
   DialogContentText, DialogActions, Alert, AlertTitle,
 } from '@mui/material';
-import SendRoundedIcon from '@mui/icons-material/SendRounded';
-import Button from '@mui/material/Button';
+import { io } from 'socket.io-client';
+
 import CharacterSheet from '../components/characterSheet.jsx';
 import DisplayChar from '../components/displayChar.jsx';
 import ChatBox from '../components/chatBox.jsx';
 
+const socket = io();
+
 export default function GamePage() {
+  // delete first line if we have the boardname already, for now it's test
+  localStorage.setItem('boardName', 'test');
+  const [chatLogs, setChatLogs] = useState([]);
+  const boardName = localStorage.getItem('boardName');
+
   const [dialogOpen, setDialogOpen] = useState(false);
   const [alert, setAlert] = useState(false);
+
+  // socket connection
+  useEffect(() => {
+    socket.emit('joinBoard', boardName);
+  }, []);
+
+  useEffect(() => {
+    // getting data from backend
+    socket.on('loadBoard', (boardData) => {
+      console.log('loading boardData');
+      console.log(boardData);
+      setChatLogs(boardData.chatLogs);
+    });
+  }, [socket]);
 
   // get the data from the db
 
@@ -35,7 +54,7 @@ export default function GamePage() {
         alignItems: 'center',
       }}
       >
-        <ChatBox />
+        <ChatBox boardName={boardName} chatLogs={chatLogs} socket={socket} />
       </Box>
 
       {/* box for character side */}
