@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, Box, Button } from '@mui/material';
+import {
+  Alert, Box, Button, AlertTitle,
+} from '@mui/material';
 import axios from 'axios';
 import PhysicalInfo from './physicalInfo.jsx';
 import CharacterStats from './charStats.jsx';
@@ -7,7 +9,7 @@ import CharInfo from './charInfo.jsx';
 import AttacksAndItems from './attacks&items.jsx';
 import Skills from './skills.jsx';
 
-export default function CharacterSheet() {
+export default function CharacterSheet({ setDialogOpen, setAlert }) {
   // Saving the data that will be manipulated with states
   const [stats, setStats] = useState({});
   const [charInfo, setCharInfo] = useState({});
@@ -15,7 +17,6 @@ export default function CharacterSheet() {
   const [skills, setSkills] = useState({});
   const [attacks, setAttacks] = useState([]);
   const [items, setItems] = useState([]);
-  const [alert, setAlert] = useState(false);
 
   const saveData = async () => {
     const data = {
@@ -27,14 +28,14 @@ export default function CharacterSheet() {
       items,
     };
     console.log(data);
-    setAlert(true);
     // getting the jwt token and sending in config for auth.js
     const token = localStorage.authorisedToken;
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
     const sendData = await axios.post('/characters/createChar', data, config);
-    console.log(sendData);
+    setDialogOpen(false);
+    setAlert(true);
   };
   // listening to each of the data componenets that change and console logs them
   useEffect(() => {
@@ -88,6 +89,7 @@ export default function CharacterSheet() {
         </Box>
         <Skills skills={skills} setSkills={setSkills} />
         <Button onClick={saveData}>Create your avatar</Button>
+
       </Box>
     </div>
   );

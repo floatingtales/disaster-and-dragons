@@ -3,13 +3,17 @@ import {
   Box, Button, InputAdornment, TextField, Typography, Dialog, DialogTitle, DialogContent,
   DialogContentText, DialogActions,
 } from '@mui/material';
-import axios from 'axios';
 
 export default function DisplayCharSheet({ currentChar, setCurrentChar }) {
   console.log(currentChar);
   return (
     <div>
-      <h1>This is the character sheet of THAT character</h1>
+      <h1>
+        Adventurer information of
+        {' '}
+        {currentChar.charInfo.name}
+        {' '}
+      </h1>
       <h1>Attacks</h1>
       <h4>
         {currentChar.attacks.map((attack) => (
