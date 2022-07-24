@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import {
+  orange, red, blue, pink,
+} from '@mui/material/colors';
 import SignUpForm from './pages/signUpForm.jsx';
 import Login from './pages/login.jsx';
 import MainPage from './pages/mainPage.jsx';
@@ -36,30 +40,47 @@ export default function App() {
     console.log(currentPage);
     // check the jwt through the backend
   }, [currentPage]);
+  const theme = createTheme({
+    palette: {
+      type: 'light',
+      primary: {
+        main: '#3f51b5',
+      },
+      secondary: {
+        main: '#f50057',
+      },
+    },
+  });
+
   return (
-    <div>
-      <Taskbar setCurrentPage={setCurrentPage} />
-      {currentPage === 'signUp' && (
-      <SignUpForm setCurrentPage={setCurrentPage} />
-      )}
-      {currentPage === 'login' && (
-      <Login setCurrentPage={setCurrentPage} />
-      )}
-      {currentPage === 'mainPage' && (
-      <MainPage setCurrentPage={setCurrentPage} />
-      )}
-      {currentPage === 'charSheet' && (
-      <CharacterSheet setCurrentPage={setCurrentPage} />
-      )}
-      {currentPage === 'game' && (
-      <GamePage />
-      )}
-      {currentPage === 'chat' && (
-      <ChatBox />
-      )}
-      {currentPage === 'createBoard' && (
-      <CreateBoard setCurrentPage={setCurrentPage} />
-      )}
-    </div>
+    <ThemeProvider theme={theme}>
+      {' '}
+      <div>
+        <Taskbar setCurrentPage={setCurrentPage} />
+        {currentPage === 'signUp' && (
+        <SignUpForm setCurrentPage={setCurrentPage} />
+        )}
+        {currentPage === 'login' && (
+        <Login setCurrentPage={setCurrentPage} />
+        )}
+        {currentPage === 'mainPage' && (
+        <MainPage setCurrentPage={setCurrentPage} />
+        )}
+        {currentPage === 'charSheet' && (
+        <CharacterSheet setCurrentPage={setCurrentPage} />
+        )}
+        {currentPage === 'game' && (
+        <GamePage />
+        )}
+        {currentPage === 'chat' && (
+        <ChatBox />
+        )}
+        {currentPage === 'createBoard' && (
+        <CreateBoard setCurrentPage={setCurrentPage} />
+        )}
+      </div>
+
+    </ThemeProvider>
+
   );
 }

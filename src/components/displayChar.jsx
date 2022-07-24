@@ -32,9 +32,9 @@ export default function DisplayChar({ charData }) {
         .
         {' '}
         {char.charInfo.name}
-        <Button onClick={editChar} value={index}>Edit</Button>
-        <Button onClick={deleteChar} value={index}>Delete</Button>
       </Button>
+      <Button onClick={editChar} value={index}>Edit</Button>
+      <Button onClick={deleteChar} value={index}>Delete</Button>
     </div>
   ));
 

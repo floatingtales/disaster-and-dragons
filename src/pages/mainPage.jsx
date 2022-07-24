@@ -33,12 +33,12 @@ export default function mainPage({ setCurrentPage }) {
     </div>
   ));
   return (
-    <div className="avoidTaskbar">
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Box>
+        <Box sx={{ fontSize: '100px' }}>Disasters and Dragons</Box>
         <Button variant="contained" onClick={createBoard}>Click here to create Board</Button>
         {boardList}
       </Box>
-
-    </div>
+    </Box>
   );
 }
