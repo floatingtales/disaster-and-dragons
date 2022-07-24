@@ -27,7 +27,6 @@ export default function CharacterSheet({ setDialogOpen, setAlert }) {
       attacks,
       items,
     };
-    console.log(data);
     // getting the jwt token and sending in config for auth.js
     const token = localStorage.authorisedToken;
     const config = {

@@ -6,7 +6,6 @@ import ChatDisplay from './chatDisplay.jsx';
 const socket = io();
 
 export default function ChatBox() {
-  localStorage.setItem('boardName', 'test');
   const [chatLogs, setChatLogs] = useState([]);
   const boardName = localStorage.getItem('boardName');
 
