@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const boardSchema = mongoose.Schema({
-  board_name: {
+  boardName: {
     required: true,
     unique: true,
     type: String,
   },
-  chat_logs: {
+  chatLogs: {
     type: Array,
   },
   characters: {

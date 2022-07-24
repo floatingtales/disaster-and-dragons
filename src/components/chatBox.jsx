@@ -1,40 +1,35 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { io } from 'socket.io-client';
 import TextInput from './textInput.jsx';
+import ChatDisplay from './chatDisplay.jsx';
+
+const socket = io();
 
 export default function ChatBox() {
+  localStorage.setItem('boardName', 'test');
   const [chatLogs, setChatLogs] = useState([]);
+  const boardName = localStorage.getItem('boardName');
 
   useEffect(() => {
-    // on load retrieve all chats on board
-    const getAllChats = async () => {
-      let allChats;
-      try {
-        // allChats = await axios.get('/boards/allChats/${name}');
-        // setChatLogs(allChats);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getAllChats();
+    socket.emit('joinBoard', boardName);
   }, []);
 
-  const chatData = chatLogs.map((chat) => {
-    const allText = chat.chatMsg.split('\n').map((lines) => <p>{lines}</p>);
-    return (
-      <div>
-        {chat.username}
-        {allText}
-      </div>
-    );
-  });
+  useEffect(() => {
+    socket.on('loadBoard', (boardData) => {
+      console.log('loading boardData');
+      console.log(boardData);
+      setChatLogs(boardData.chatLogs);
+    });
+  }, [socket]);
+
+  useEffect(() => {
+    console.log(chatLogs);
+  }, [chatLogs]);
 
   return (
     <div id="chatBox">
-      <TextInput chatLogs={chatLogs} setChatLogs={setChatLogs} style={{ height: '30%' }} />
-      <div>
-        {chatData}
-      </div>
+      <ChatDisplay chatLogs={chatLogs} />
+      <TextInput socket={socket} boardName={boardName} chatLogs={chatLogs} style={{ height: '30%' }} />
     </div>
   );
 }
