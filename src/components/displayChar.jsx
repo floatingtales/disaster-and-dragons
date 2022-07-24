@@ -18,6 +18,12 @@ export default function DisplayChar({ charData }) {
   const handleClose = () => {
     setDialogOpen(false);
   };
+  const editChar = (event) => {
+    const { value } = event.target;
+  };
+  const deleteChar = (event) => {
+    const { value } = event.target;
+  };
   const charList = charData.map((char, index) => (
     <div>
       <Button onClick={openCharDialog} value={index}>
@@ -26,6 +32,8 @@ export default function DisplayChar({ charData }) {
         .
         {' '}
         {char.charInfo.name}
+        <Button onClick={editChar} value={index}>Edit</Button>
+        <Button onClick={deleteChar} value={index}>Delete</Button>
       </Button>
     </div>
   ));

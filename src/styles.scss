@@ -3,9 +3,10 @@ html {
 }
 
 body {
-  background-color: rgb(142, 89, 98);
+  background-color: #ffffff;
   display: flex;
   justify-content: center;
+  color: #a43317;
 }
 
 #signUp,
@@ -29,7 +30,7 @@ body {
   height: 100%;
   justify-content: space-between;
   flex-direction: column;
-  background-color: aquamarine;
+  background-color: rgb(244, 160, 160);
 }
 
 #chatDisplay {
