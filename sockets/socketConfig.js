@@ -12,46 +12,41 @@ const socketConfig = (io) => {
     socket.on('saveChat', async (boardName, chatLogs) => {
       console.log('updating chats:', boardName);
       console.log(chatLogs);
-      const update = await boardModel.updateOne({ boardName }, { $set: { chatLogs } });
-      console.log(update);
-      const boardData = await boardModel.findOne({ boardName });
+      const boardData = await boardModel.findOneAndUpdate({ boardName }, { $set: { chatLogs } }, { returnDocument: 'after' });
       console.log(boardData);
       io.in(boardName).emit('loadChat', boardData);
     });
 
     socket.on('saveChar', async (boardName, characters) => {
       console.log('adding a character:', boardName);
-      const update = await boardModel.updateOne({ boardName }, {
+      const boardData = await boardModel.findOneAndUpdate({ boardName }, {
         $push: {
           characters,
         },
-      });
-      console.log(update);
-      const boardData = await boardModel.findOne({ boardName });
+      }, { returnDocument: 'after' });
+      console.log(boardData);
       io.in(boardName).emit('loadChar', boardData);
     });
 
     socket.on('deleteChar', async (boardName, characters) => {
       console.log('deleting a character');
-      const update = await boardModel.updateOne({ boardName }, {
+      const boardData = await boardModel.findOneAndUpdate({ boardName }, {
         $set: {
           characters,
         },
-      });
-      console.log(update);
-      const boardData = await boardModel.findOne({ boardName });
+      }, { returnDocument: 'after' });
+      console.log(boardData);
       io.in(boardName).emit('loadChar', boardData);
     });
 
     socket.on('updateChar', async (boardName, characters) => {
       console.log('updating characters');
-      const update = await boardModel.updateOne({ boardName }, {
+      const boardData = await boardModel.findOneAndUpdate({ boardName }, {
         $set: {
           characters,
         },
-      });
-      console.log(update);
-      const boardData = await boardModel.findOne({ boardName });
+      }, { returnDocument: 'after' });
+      console.log(boardData);
       io.in(boardName).emit('loadChar', boardData);
     });
   });
